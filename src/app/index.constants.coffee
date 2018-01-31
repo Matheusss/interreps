@@ -1,2 +1,3 @@
 angular.module('interreps')
-  .constant 'moment', moment
+  .constant 'MOMENT', moment
+  .constant 'ADMINS', ['0hzjcgDnBLVByLbQ1ttkAzCShv92']

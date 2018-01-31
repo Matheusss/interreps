@@ -1,12 +1,43 @@
 <div class="" id="home">
-  <div class="container">
-    <div class="row" id="pwd-container">
-      <div class="col-md-4"></div>
+  <div class="home-container">
+    <div class="image"></div>
+  </div>
+  <div class="home-container-layer">
+    <div class="home-center-container">
+      <div class="home-main">
+        <div class="home-main-container">
+          <div class="home-sentence">
+            <div class="home-divider">
+              <span>Interreps X</span>
+            </div>
+          </div>
+          <div class="home-content">
+            <div class="home-divider">
+              <h1>Atlética Unesp Sorocaba</h1>
+              <div class="">
+                <button type="button" class="btn btn-outline" ng-if="!showForm" ng-click="methods.changeView()">Login</button>
+                <section class="section" ng-if="showForm">
+                  <form ng-submit="methods.login()" class="section-container">
+                    <input type="email" name="email" placeholder="Email" required class="form-control input-lg" ng-model="user.email" />
 
+                    <input type="password" class="form-control input-lg" id="password" placeholder="Senha" required ng-model="user.password" />
+
+                    <button type="submit" ng-disabled="!user.email || user.login" class="btn btn-lg btn-primary btn-block" ng-click="methods.login()">Login</button>
+
+                    <button type="button" class="btn btn-outline" ng-if="showForm" ng-click="methods.changeView()">Voltar</button>
+                  </form>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="" id="">
       <div class="col-md-4">
-       <section class="login-form">
-         <form method="post" action="#" role="login">
-           <img src="http://i.imgur.com/RcmcLv4.png" class="img-responsive" alt="" />
+       <section class="section">
+         <form ng-submit="methods.login()" class="section-container">
+           <h2 class="title">Atlética Unesp Sorocaba</h2>
            <input type="email" name="email" placeholder="Email" required class="form-control input-lg" ng-model="user.email" />
 
            <input type="password" class="form-control input-lg" id="password" placeholder="Senha" required ng-model="user.password" />
@@ -15,15 +46,11 @@
            <div class="pwstrength_viewport_progress"></div>
 
 
-           <button type="button" ng-disabled="!user.email || user.login" class="btn btn-lg btn-primary btn-block" ng-click="methods.login()">Login</button>
+           <button type="submit" ng-disabled="!user.email || user.login" class="btn btn-lg btn-primary btn-block" ng-click="methods.login()">Login</button>
 
          </form>
        </section>
-       </div>
-
-     <div class="col-md-4"></div>
-
-
-   </div>
+    </div>
+    </div> -->
   </div>
 </div>
