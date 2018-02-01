@@ -1,6 +1,7 @@
 <div class="" id="home">
   <div class="home-container">
-    <div class="image"></div>
+    <div ng-bg-slideshow="[ '/assets/images/interreps1.jpg', '/assets/images/interreps2.jpg', '/assets/images/interreps3.jpg']" interval=5000></div>
+    <!-- <div class="image"></div> -->
   </div>
   <div class="home-container-layer">
     <div class="home-center-container">
@@ -13,44 +14,40 @@
           </div>
           <div class="home-content">
             <div class="home-divider">
-              <h1>Atlética Unesp Sorocaba</h1>
-              <div class="">
-                <button type="button" class="btn btn-outline" ng-if="!showForm" ng-click="methods.changeView()">Login</button>
-                <section class="section" ng-if="showForm">
-                  <form ng-submit="methods.login()" class="section-container">
-                    <input type="email" name="email" placeholder="Email" required class="form-control input-lg" ng-model="user.email" />
+              <div class="logo">
+                <!-- <h1>Atlética Unesp Sorocaba</h1> -->
+                <div class="logo-bg">
 
-                    <input type="password" class="form-control input-lg" id="password" placeholder="Senha" required ng-model="user.password" />
+                </div>
+              </div>
 
-                    <button type="submit" ng-disabled="!user.email || user.login" class="btn btn-lg btn-primary btn-block" ng-click="methods.login()">Login</button>
+              <div class="login">
+                <button type="button" class="btn btn-outline login-button" ng-if="!showForm" ng-click="methods.changeView()">Login</button>
+                <div class="login-container" ng-if="showForm">
+                  <span class="login-title">Login</span>
+                  <form ng-submit="methods.login()" class="login-form">
+                    <div class="typeble">
+                      <div class="login-typed-input">
+                        <input type="email" placeholder="Email" class="email animated clean-padding-sides" ng-model="user.email" required/>
+                      </div>
+                      <div class="login-typed-input">
+                        <input type="password" placeholder="Senha" class="password animated clean-padding-sides" ng-model="user.password" required/>
+                      </div>
+                    </div>
 
-                    <button type="button" class="btn btn-outline" ng-if="showForm" ng-click="methods.changeView()">Voltar</button>
+                    <div class="login-actions">
+                      <button type="submit" ng-disabled="!user.email || user.login" class="btn btn-login" ng-click="methods.login()">Login</button>
+                    </div>
                   </form>
-                </section>
+                </div>
+                <div class="back-button">
+                  <button type="button" class="btn btn-outline" ng-if="showForm" ng-click="methods.changeView()">Voltar</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- <div class="" id="">
-      <div class="col-md-4">
-       <section class="section">
-         <form ng-submit="methods.login()" class="section-container">
-           <h2 class="title">Atlética Unesp Sorocaba</h2>
-           <input type="email" name="email" placeholder="Email" required class="form-control input-lg" ng-model="user.email" />
-
-           <input type="password" class="form-control input-lg" id="password" placeholder="Senha" required ng-model="user.password" />
-
-
-           <div class="pwstrength_viewport_progress"></div>
-
-
-           <button type="submit" ng-disabled="!user.email || user.login" class="btn btn-lg btn-primary btn-block" ng-click="methods.login()">Login</button>
-
-         </form>
-       </section>
-    </div>
-    </div> -->
   </div>
 </div>

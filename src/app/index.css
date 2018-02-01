@@ -14,6 +14,11 @@ body {
   background-size: cover;
 }
 
+.container {
+  width: 80%;
+  height: 100%;
+}
+
 .screen-height {
   height: 100%;
   width: 100%;
@@ -23,33 +28,19 @@ body {
   padding: 0;
 }
 
-/* Section */
-.section {
-	margin-top: 60px;
+.animated {
+  -webkit-transform: translate3d(0,0,-1)!important;
+  transform: translate3d(0,0,-1)!important;
+  -ms-transform: translate3d(0,0,-1)!important;
+  -webkit-backface-visibility: inherit!important;
+  backface-visibility: inherit!important;
+  animation-fill-mode: both;
 }
 
-.section-container {
-	color: #fff;
-	background: #824282;
-	padding: 26px;
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+.clean-padding-sides {
+  padding-left: 0;
+  padding-right: 0;
 }
-	.section-container img {
-		display: block;
-		margin: 0 auto;
-		margin-bottom: 35px;
-	}
-	.section-container input,
-	.section-container button {
-		font-size: 18px;
-		margin: 16px 0;
-	}
-	.section-container > div {
-		text-align: center;
-	}
-
 
 /* Buttons */
 .btn {
@@ -70,6 +61,21 @@ body {
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
+}
+
+.btn-login {
+  background-color: transparent;
+  border: 0;
+  float: right;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn-login:hover {
+  text-decoration: underline;
+  color: #fff;
 }
 
 .btn-outline {

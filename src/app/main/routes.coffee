@@ -7,5 +7,12 @@ angular.module 'interreps'
         templateUrl: 'app/main/template.html'
         controller: 'MainController'
         controllerAs: 'main'
+        resolve:
+          users: ['FirebaseService', (FirebaseService) ->
+            FirebaseService.getAllUsers()
+          ]
+          reps: ['FirebaseService', (FirebaseService) ->
+            FirebaseService.getAllReps()
+          ]
 
     $urlRouterProvider.otherwise '/'
