@@ -28,6 +28,14 @@ body {
   padding: 0;
 }
 
+.no-padding-right {
+  padding-right: 0;
+}
+
+.no-padding-left {
+  padding-left: 0;
+}
+
 .animated {
   -webkit-transform: translate3d(0,0,-1)!important;
   transform: translate3d(0,0,-1)!important;
@@ -42,9 +50,63 @@ body {
   padding-right: 0;
 }
 
+label {
+  width: 100%;
+}
+
+/* Inputs text */
+  input[type="text"] {
+    background-color: transparent;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    border-left: none!important;
+    border-right: none!important;
+    border-top: none!important;
+    /* border: 0; */
+    font-size: 100%;
+    height: 35px;
+    margin: 5px auto 0;
+    vertical-align: middle;
+    width: 75%;
+    outline: none;
+  }
+
+/* Tag */
+.tag {
+  background-color: rgba(255,255,255,.1);
+  color           : #fff;
+  cursor          : default;
+  display         : inline-block;
+  font-size       : 90%;
+  height          : auto;
+  text-align      : center;
+  text-decoration : none !important;
+  border          : 2px solid rgba(255,255,255,.4);
+  margin-bottom   : 5px;
+  float           : left;
+  margin-right    : 5px;
+  min-width       : 50px;
+}
+
+.tag:hover {
+  background-color: rgba(255,255,255,.4);
+
+}
+
+.tag  a {
+  color: #fff;
+  display: inline-block;
+  padding: 10px 5px;
+  text-decoration: none;
+}
+
+.tag .icon-btn {
+  padding-right: 5px;
+}
+
 /* Buttons */
 .btn {
-  background: #050614;
+  /* background: #050614;
   border: 0;
   color: #fff;
   cursor: pointer;
@@ -61,6 +123,15 @@ body {
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
+  outline: none; */
+}
+
+.icon-btn {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: 0;
+  outline: none;
 }
 
 .btn-login {
@@ -79,7 +150,7 @@ body {
 }
 
 .btn-outline {
-  border-color: red;
+  /* border-color: red; */
   display: inline-block;
   background-color: rgba(255,255,255,.1);
   text-transform: lowercase;
@@ -105,7 +176,7 @@ body {
   background-color: rgba(255,255,255,.4);
 }
 
-.btn-primary {
+.btn-pink {
   background: #d934ce;
   background-image: -webkit-linear-gradient(top, #d934ce, #952bb8);
   background-image: -moz-linear-gradient(top, #d934ce, #952bb8);
@@ -126,7 +197,7 @@ body {
   text-decoration: none;
 }
 
-.btn-primary:hover {
+.btn-pink:hover {
   background: #ec3cfc;
   background-image: -webkit-linear-gradient(top, #ec3cfc, #d934d9);
   background-image: -moz-linear-gradient(top, #ec3cfc, #d934d9);
@@ -167,4 +238,82 @@ body {
   background-image: linear-gradient(to bottom, #5583e0, #3f7dd9);
   text-decoration: none;
   color: #ffffff;
+}
+
+/* Ui Select */
+.ui-select-container {
+  /* width: 30%; */
+}
+
+/* Do not remove the imports bellow */
+
+/*
+================================
+================================
+INSERT CSS BELOW
+================================
+================================
+*/
+.ui-select-multiple.ui-select-bootstrap {
+  padding: 0;
+}
+.ui-select-multiple.ui-select-bootstrap input.ui-select-search {
+  background-color: #fff !important;
+}
+.ui-select-container {
+  width: calc(100% - 38px);
+}
+.ui-select-container .ui-select-match {
+  line-height: 35px;
+}
+.ui-select-container .ui-select-match .btn {
+  height: 35px;
+  letter-spacing: normal;
+  padding: 0.5rem 0.6rem;
+  text-transform: none;
+}
+.ui-select-container .ui-select-match .btn:hover {
+  color: #fff;
+}
+.ui-select-container input {
+  margin-top: 0 !important;
+  width: 100% !important;
+}
+.ui-select-container input:disabled {
+  display: block !important;
+  opacity: 0.5;
+}
+.ui-select-container .ui-select-choices {
+  background-color: white;
+  border: 1px solid black;
+  color: #fff;
+  margin-bottom: 5px;
+  padding: 5px;
+  max-height: 200px;
+  overflow: auto;
+  position: inherit !important;
+}
+.ui-select-container .ui-select-choices .ui-select-choices-row {
+  font-size: 14px;
+  padding: 0 2px;
+}
+.ui-select-container .ui-select-choices .ui-select-choices-row:hover {
+  background-color: white;
+}
+.ui-select-container .ui-select-choices .ui-select-choices-row a {
+  color: #fff;
+  white-space: normal !important;
+}
+.ui-select-container .ui-select-choices .ui-select-choices-row.active a {
+  color: #fff;
+  background-color: black;
+}
+.ui-select-container .ui-select-choices .ui-select-choices-row-inner:hover {
+  color: #fff;
+  background-color: black;
+  cursor: pointer;
+}
+.ui-select-container .dropdown-items:hover {
+  background-color: black;
+  cursor: pointer;
 }

@@ -108,10 +108,123 @@
   vertical-align: middle;
 }
 
-.register-container {
+.register-parent-container {
   overflow: auto;
   height: calc(100% - 90px)!important;
-  /* margin-top: 90px; */
-  width: 80%;
   margin: 70px auto 20px auto;
+}
+
+.register-container {
+  width: 80%;
+  height: 100%;
+  color: #fff;
+  margin: auto;
+}
+
+.register-title {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  display: inline-block;
+  margin: 0;
+}
+
+.register-form {
+  height: 65%;
+  width: 100%;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.names-form {
+  height: 100%;
+  display: inline-block;
+}
+
+.names-form form {
+  height: 100px;
+  display: inline-block;
+  width: 100%;
+}
+
+.add-participant {
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.register-input {
+  margin-top: 25px;
+}
+
+.participants {
+  height: calc(100% - 165px);
+  width: 100%;
+  margin-top: 25px;
+  display: inline-block;
+  overflow: auto;
+}
+
+.competitions-form {
+  height: 100%;
+  display: inline-block;
+  border-left: 1px solid #fff;
+}
+
+.competitions-form .section-info {
+  height: 55px;
+}
+
+.competitions-form label {
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.comp-type {
+  text-decoration: underline;
+}
+
+.competitions-form .checkboxes {
+  /* margin-bottom: 5px; */
+}
+
+.check {
+  /* display: none; */
+}
+
+.custom-checkboxes {
+  margin-top: 0!important;
+}
+
+.custom-checkboxes .far {
+  font-size: 18px;
+}
+
+.custom-checkboxes input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkboxes input[type="checkbox"] ~ .unchecked {
+  color: #fff;
+  display: inline;
+}
+
+.custom-checkboxes input[type="checkbox"]:checked ~ .unchecked {
+  display: none;
+}
+
+.custom-checkboxes input[type="checkbox"] ~ .checked {
+  /* color: #fff; */
+  display: none;
+}
+
+.custom-checkboxes input[type="checkbox"]:checked ~ .checked {
+  display: inline;
+  color: #fff;
+}
+
+.selects {
+  width: 25%;
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }

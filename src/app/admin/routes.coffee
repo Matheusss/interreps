@@ -3,7 +3,28 @@ angular.module 'interreps'
     'ngInject'
     $stateProvider
       .state 'admin',
-        url: '/admin'
+        url: '/admin/:id'
+        abstract: yes
+        params: { id: null }
         templateUrl: 'app/admin/template.html'
         controller: 'AdminController'
+        controllerAs: 'admin'
+        resolve :
+           reps: ['FirebaseService', (FirebaseService) ->
+              FirebaseService.getAllReps()
+            ]
+           user: ['FirebaseService', '$stateParams', (FirebaseService, $stateParams) ->
+              FirebaseService.getUserById($stateParams.id)
+            ]
+
+      .state 'admin.reps',
+        url: '/reps'
+        templateUrl: 'app/admin/reps/template.html'
+        controller: 'AdminRepsController'
+        controllerAs: 'admin'
+
+      .state 'admin.rules',
+        url: '/rules'
+        templateUrl: 'app/admin/rules/template.html'
+        controller: 'AdminRulesController'
         controllerAs: 'admin'

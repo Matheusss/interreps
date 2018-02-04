@@ -43,13 +43,13 @@ angular.module 'interreps'
           if currentUser
             $scope.$storage.user = currentUser
             $timeout () ->
-              $state.go 'admin'
+              $state.go 'admin.reps', {id: currentUser.id}
             1000
           else
             if currentRep
               $scope.$storage.user = currentRep
               $timeout () ->
-                $state.go 'register'
+                $state.go 'register', {id: currentRep.id}
               , 1000
 
 

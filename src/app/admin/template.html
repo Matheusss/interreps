@@ -1,1 +1,34 @@
-admin
+<div class="admin">
+  <div class="navbar">
+    <div class="navbar-container">
+      <div class="aaauso-logo"></div>
+      <div class="admin-menu">
+        <ul class="">
+          <li class="menu-name" ng-class="{'active' : state.current.name === item.state}" ng-repeat="item in menu">
+            <a ui-sref="{{item.state}}">
+              <span>
+                <i class="{{item.icon}}"></i>
+                <span class="name">{{item.name}}</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="user-info">
+        <div class="rep-logo" ng-style="{ 'background-image': 'url(' + img + ')' }"></div>
+        <div class="rep-name">
+          <div class="rep-name-container">
+            <span class="name">{{user.name}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="admin-layer">
+    <div class="admin-parent-container">
+      <div class="admin-container">
+        <div ui-view class="screen-height"></div>
+      </div>
+    </div>
+  </div>
+</div>
