@@ -15,7 +15,7 @@ angular.module 'interreps'
       {
         name: 'Horários'
         icon: 'fas fa-clock fa-lg'
-        state: 'admin.schedule'
+        state: 'admin.schedules'
       }
       {
         name: 'Placar'

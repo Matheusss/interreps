@@ -47,4 +47,13 @@ angular.module "interreps"
         .then (result) ->
           return result.val()
 
+      # Rules
+      getRules : () ->
+        database.ref('rules').once('value')
+        .then (result) ->
+          return result.val()
+
+      updateRules : (rules) ->
+        database.ref('rules').set(rules)
+
     }

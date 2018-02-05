@@ -18,7 +18,7 @@ angular.module 'interreps'
       addParticipant : () ->
         if $scope.participant isnt ''
           $scope.participants.push $scope.participant
-          FirebaseService.updateRepParticipants($scope.rep.id, $scope.participants)
+          # FirebaseService.updateRepParticipants($scope.rep.id, $scope.participants)
           $scope.participant = ''
 
       removeParticipant : (index) ->
@@ -26,6 +26,9 @@ angular.module 'interreps'
 
       clear : () ->
         $scope.participants = []
+
+      save : () ->
+        console.log $scope.participants, $scope.team, $scope.teams, $scope.selectedCompetitions
 
 
 

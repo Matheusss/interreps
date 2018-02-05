@@ -1,0 +1,73 @@
+.rules-container {
+  height: 80%;
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+  background: rgba(255,255,255, 0.4);
+  padding: 10px;
+}
+
+.rules-container a {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 0;
+}
+
+.rules-container a:hover {
+  color: #fff;
+  text-decoration: underline;
+  border-bottom: 0;
+}
+
+.rules-container pre {
+  color: #fff;
+  height: 100%;
+  overflow-x: hidden;
+  background: rgba(255,255,255,.0);
+  border: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.editable-wrap {
+  height: 100%;
+  width: 100%;
+  color: #000;
+}
+
+.editable-wrap textarea {
+  height: 100%;
+  width: 100%!important;
+}
+
+.editable-controls .editable-buttons {
+  position: relative;
+  margin-top: 10px;
+  left: -15px;
+}
+
+.editable-buttons button {
+  display: inline-block;
+  background-color: rgba(255,255,255,.1);
+  text-transform: lowercase;
+  font-weight: 400;
+  letter-spacing: 0;
+  padding: .4rem .7rem;
+  border: 2px solid rgba(255,255,255,.5);
+  /* width: 100%; */
+  text-decoration: none;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+}
+
+.editable-buttons button:hover {
+  color: #fff;
+  background-color: rgba(255,255,255,.4);
+}

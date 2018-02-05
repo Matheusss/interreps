@@ -23,8 +23,18 @@ angular.module 'interreps'
         controller: 'AdminRepsController'
         controllerAs: 'admin'
 
+      .state 'admin.schedules',
+        url: '/schedules'
+        templateUrl: 'app/admin/schedules/template.html'
+        controller: 'AdminSchedulesController'
+        controllerAs: 'admin'
+
       .state 'admin.rules',
         url: '/rules'
         templateUrl: 'app/admin/rules/template.html'
         controller: 'AdminRulesController'
         controllerAs: 'admin'
+        resolve :
+           rules: ['FirebaseService', (FirebaseService) ->
+              FirebaseService.getRules()
+            ]

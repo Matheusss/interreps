@@ -29,28 +29,38 @@ angular.module 'interreps'
     $scope.user =
       email: undefined
       password: undefined
+      user: undefined
 
     $scope.methods =
       changeView : () ->
         $scope.showForm = !$scope.showForm
 
       login : () ->
-        firebase.auth().signInWithEmailAndPassword($scope.user.email, $scope.user.password)
-        .then (result) ->
-          currentUser = _.find $scope.users, (user) -> user.uid is result.uid
-          currentRep  = _.find $scope.reps, (rep) -> rep.uid is result.uid
+
+          currentUser = _.find $scope.users, (user) -> user.user is $scope.user.user and user.password is $scope.user.password
+          currentRep  = _.find $scope.reps, (rep) -> rep.user is $scope.user.user and rep.password is $scope.user.password
 
           if currentUser
             $scope.$storage.user = currentUser
+            firebase.auth().createUserWithEmailAndPassword(currentUser.email, currentUser.password)
+            .catch (error) ->
+              if error.code is 'auth/email-already-in-use'
+                firebase.auth().signInWithEmailAndPassword(currentUser.email, currentUser.password)
+
             $timeout () ->
               $state.go 'admin.reps', {id: currentUser.id}
             1000
-          else
-            if currentRep
-              $scope.$storage.user = currentRep
-              $timeout () ->
-                $state.go 'register', {id: currentRep.id}
-              , 1000
+
+          if currentRep
+            $scope.$storage.user = currentRep
+            firebase.auth().createUserWithEmailAndPassword(currentRep.email, currentRep.password)
+            .catch (error) ->
+              if error.code is 'auth/email-already-in-use'
+                  firebase.auth().signInWithEmailAndPassword(currentRep.email, currentRep.password)
+
+            $timeout () ->
+              $state.go 'register', {id: currentRep.id}
+            , 1000
 
 
 
@@ -58,8 +68,8 @@ angular.module 'interreps'
           # $state.go 'admin'
           # $state.go 'register'
 
-
-        .catch (error) ->
-          console.log error
+        #
+        # .catch (error) ->
+        #   console.log error
 
     return

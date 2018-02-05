@@ -10,5 +10,7 @@ angular.module 'interreps', [
   'ui.bootstrap',
   'ngStorage',
   'checklist-model',
-  'ui.select'
+  'ui.select',
+  'xeditable',
+  'ui.calendar'
 ]

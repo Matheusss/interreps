@@ -1,0 +1,107 @@
+<div class="reps-sidebar">
+  <ul class="ul-reps infos">
+    <li class="li-rep-name infos" ng-class="{'active' : !selectedRep}" ng-click="methods.selectRep()">
+      <div class="li-rep-name-container">
+        <span>Informações gerais</span>
+      </div>
+      <!-- <i class="fas fa-angle-double-right"></i> -->
+    </li>
+  </ul>
+  <ul class="ul-reps">
+    <li class="li-rep-name" ng-class="{'active' : selectedRep.id === rep.id}" ng-repeat="rep in reps" ng-click="methods.selectRep(rep)">
+      <div class="rep-logo" ng-style="{ 'background-image': 'url(' + rep.url + ')' }"></div>
+      <div class="li-rep-name-container reps">
+        <span class="name">{{rep.name}}</span>
+        <span class="qtt-team">{{rep.numberOfParticipants}} participantes</span>
+      </div>
+      <!-- <div class="icon-right">
+        <i class="fas fa-angle-double-right"></i>
+      </div> -->
+    </li>
+  </ul>
+</div>
+<div class="admin-reps-container">
+  <div class="" ng-if="!selectedRep">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flwx no-block">
+              <div class="card-icon">
+
+              </div>
+              <div class="card-infos">
+                <h6>Repúblicas cadastradas</h6>
+                <h2>2</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flwx no-block">
+              <div class="card-icon">
+
+              </div>
+              <div class="card-infos">
+                <h6>Participantes cadastrados</h6>
+                <h2>20</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flwx no-block">
+              <div class="card-icon">
+
+              </div>
+              <div class="card-infos">
+                <h6>Valor total a receber</h6>
+                <h2>X</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="" ng-if="selectedRep">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flwx no-block">
+              <!-- <div class="card-icon">
+
+              </div> -->
+              <div class="card-infos reps">
+                <h2>Participantes cadastrados ({{selectedRep.numberOfParticipants}})</h2>
+                <h6 ng-repeat="name in selectedRep.participants">{{name}}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flwx no-block">
+              <!-- <div class="card-icon">
+
+              </div> -->
+              <div class="card-infos reps">
+                <h2>Provas</h2>
+                <h6 ng-repeat="comp in selectedRep.competitions">{{comp.name}}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
