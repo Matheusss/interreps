@@ -5,14 +5,16 @@ angular.module 'interreps'
     $scope.rep = rep
     $scope.allCompetitions = competitions
     $scope.img = "../assets/images/#{$scope.rep.user}.jpg"
-    $scope.selectedCompetitions = []
+    $scope.selectedCompetitions = $scope.rep.competitions or []
     $scope.user         = $localStorage.user
     $scope.participant  = ''
-    $scope.participants = []
+    $scope.participants = $scope.rep.participants or []
     $scope.team =
       partitipants : []
       competition  : {}
     $scope.teams = []
+
+    console.log $scope.rep
 
     $scope.methods =
       addParticipant : () ->
@@ -28,7 +30,10 @@ angular.module 'interreps'
         $scope.participants = []
 
       save : () ->
-        console.log $scope.participants, $scope.team, $scope.teams, $scope.selectedCompetitions
+        FirebaseService.updateRepParticipants($scope.rep.id, $scope.participants)
+        FirebaseService.updateRepCompetitions($scope.rep.id, $scope.selectedCompetitions)
+
+
 
 
 

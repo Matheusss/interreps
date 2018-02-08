@@ -1,0 +1,56 @@
+
+  .deckgrid[deckgrid] {
+
+    overflow: auto;
+
+      &::before {
+        content: '1 .column.column-1-1';
+        font-size: 0;
+        visibility: hidden;
+
+        @media (max-width: 450px){
+          content: '1 .column.column-1-1';
+        }
+        @media (min-width: 450px) and (max-width: 700px){
+          content: '2 .column.column-1-2';
+        }
+        @media (min-width: 700px){
+          content: '3 .column.column-1-3';
+        }
+      }
+  }
+
+    // Sizes
+  .deckgrid {
+
+    .column-1-1 {
+      $percentage: 100% / 1;
+      $reduceMargin: $deckGridMargin - (($deckGridMargin / 2) - 1 - 1);
+      width: calc(#{$percentage} - #{$reduceMargin});
+    }
+
+    .column-1-2 {
+      $percentage: 100% / 2;
+      $reduceMargin: $deckGridMargin - (($deckGridMargin / 2) - 1 - 2);
+      width: calc(#{$percentage} - #{$reduceMargin});
+    }
+    .column-1-3 {
+      $percentage: 100% / 3;
+      $reduceMargin: $deckGridMargin - (($deckGridMargin / 2) - 1 - 3);
+      width: calc(#{$percentage} - #{$reduceMargin});
+    }
+  }
+
+
+.deckgrid .column {
+  float: left;
+  margin-left: $deckGridMargin;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  & > div {
+    margin-bottom: $deckGridMargin;
+  }
+}

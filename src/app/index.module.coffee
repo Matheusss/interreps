@@ -12,5 +12,6 @@ angular.module 'interreps', [
   'checklist-model',
   'ui.select',
   'xeditable',
-  'ui.calendar'
+  'ui.calendar',
+  'akoenig.deckgrid'
 ]

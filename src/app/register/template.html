@@ -50,7 +50,7 @@
               <label class="comp-type">Esportes</label>
               <div class="checkboxes" ng-repeat="sport in allCompetitions.sports track by $index">
                 <label class="custom-checkboxes icon-btn">
-                  <input class="check" type="checkbox" data-checklist-model="selectedCompetitions" data-checklist-value="sport" />
+                  <input class="check" type="checkbox" data-checklist-model="selectedCompetitions" data-checklist-value="sport" checklist-comparator=".name" />
                   <i class="unchecked far fa-square fa-lg"></i>
                   <i class="checked far fa-check-square fa-lg"></i>
                   <span>{{sport.name}}</span>
@@ -61,7 +61,7 @@
               <label class="comp-type">Não alcóolicos</label>
               <div class="checkboxes" ng-repeat="comp in allCompetitions.nonAlcoholic.individual track by $index">
                 <label class="custom-checkboxes icon-btn">
-                  <input class="check" type="checkbox" data-checklist-model="selectedCompetitions" data-checklist-value="comp" />
+                  <input class="check" type="checkbox" data-checklist-model="selectedCompetitions" data-checklist-value="comp" checklist-comparator=".name"/>
                   <i class="unchecked far fa-square fa-lg"></i>
                   <i class="checked far fa-check-square fa-lg"></i>
                   <span>{{comp.name}}</span>
@@ -69,7 +69,7 @@
               </div>
               <div class="checkboxes" ng-repeat="comp in allCompetitions.nonAlcoholic.team track by $index">
                 <label class="custom-checkboxes icon-btn">
-                  <input class="check" type="checkbox" data-checklist-model="selectedCompetitions" data-checklist-value="comp" />
+                  <input class="check" type="checkbox" data-checklist-model="selectedCompetitions" data-checklist-value="comp" checklist-comparator=".name"/>
                   <i class="unchecked far fa-square fa-lg"></i>
                   <i class="checked far fa-check-square fa-lg"></i>
                   <span>{{comp.name}}</span>
@@ -80,7 +80,7 @@
               <label class="comp-type">Alcóolicos</label>
               <div class="checkboxes" ng-repeat="comp in allCompetitions.alcoholic.individual track by $index">
                 <label class="custom-checkboxes icon-btn">
-                  <input class="check" type="checkbox" data-checklist-model="selectedCompetitions" data-checklist-value="comp" />
+                  <input class="check" type="checkbox" data-checklist-model="selectedCompetitions" data-checklist-value="comp" checklist-comparator=".name" />
                   <i class="unchecked far fa-square fa-lg"></i>
                   <i class="checked far fa-check-square fa-lg"></i>
                   <span>{{comp.name}}</span>
@@ -88,7 +88,7 @@
               </div>
               <div class="checkboxes" ng-repeat="comp in allCompetitions.alcoholic.team track by $index">
                 <label class="custom-checkboxes icon-btn">
-                  <input class="check" type="checkbox" data-checklist-model="selectedCompetitions" data-checklist-value="comp" />
+                  <input class="check" type="checkbox" data-checklist-model="selectedCompetitions" data-checklist-value="comp" checklist-comparator=".name" />
                   <i class="unchecked far fa-square fa-lg"></i>
                   <i class="checked far fa-check-square fa-lg"></i>
                   <span>{{comp.name}}</span>
