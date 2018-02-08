@@ -1,8 +1,10 @@
 angular.module 'interreps'
- .controller 'AdminSchedulesController', ($rootScope, $scope, $timeout, $interval, FirebaseService) ->
+ .controller 'AdminSchedulesController', ($rootScope, $scope, $timeout, $interval, $state, FirebaseService) ->
     'ngInject'
 
     $scope.events = []
+    $rootScope.currentState = _.find $rootScope.menu, (item) -> item.state is $state.current.name
+
     $scope.events = [
       # {title: 'All Day Event',start: new Date(y, m, 1)},
       # {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},

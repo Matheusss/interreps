@@ -8,49 +8,58 @@
   padding: 20px 10px;
 }
 
+.search-row {
+  margin-bottom: 50px;
+}
+
 .admin-reps-container .card {
+  height: 70px;
+  width: 100%;
   border: 0px;
   border-radius: 0;
   box-shadow: none;
-  margin-bottom: 30px;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
+  display: inline-block;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-}
-
-.card .card-body {
-  flex: 1 1 auto;
-  padding: 1.25rem;
   color: #000;
-  font-weight: 300;
 }
 
-.d-flex {
-  display: flex!important;
+.card .rep-logo {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  /*top: 0;*/
+  /*transform: translateY(0);*/
+  margin-left: 10px;
 }
 
-.card-icon {
-  margin-right: 20px;
+.card .rep-fast-info {
+  display: inline-block;
+  height: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  position: relative;
+  width: calc(100% - 80px);
+  float: right;
+  padding-left: 10px;
+}
+
+.card {
   align-self: center!important;
 }
 
-.card-infos {
-  align-self: center!important;
-}
-
-.card-infos h6 {
+.card h6 {
   color: #99abb4!important;
   margin-bottom: 0;
   margin-top: 10px;
 }
 
-.card-infos h2 {
+.card h2 {
   color: #455a64!important;
   margin-top: 0;
+  font-size: 18px;
   /* margin-top: 10px; */
 }
 

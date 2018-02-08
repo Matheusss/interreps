@@ -5,8 +5,10 @@ angular.module 'interreps'
     $scope.state = $state
     $scope.user = user
     $scope.reps = reps
+    $scope.status = 
+     isopen: no
     $scope.img  = "../assets/images/#{$scope.user.user}.png"
-    $scope.menu = [
+    $rootScope.menu = [
       {
         name: 'Repúblicas'
         icon: 'fas fa-users fa-lg'
@@ -29,8 +31,8 @@ angular.module 'interreps'
       }
     ]
 
+    $rootScope.currentState = _.find $rootScope.menu, (item) -> item.state is $scope.state.current.name
 
     $scope.methods = {}
-
 
     return

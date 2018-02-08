@@ -1,16 +1,21 @@
 <div class="admin-reps-container">
-
+  <div class="row search-row">
+    <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+      <div class="input-search">
+        <input type="text" ng-model="search" class="search" placeholder="Pesquisar...">
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2" ng-style="{'margin-top': '10px'}">
+      <span>{{reps.length}} repúblicas cadastradas</span>
+    </div>
+  </div>
   <div class="row">
-    <div deckgrid source="reps" class="deckgrid" ng-class="{
-    'size-3'  : screenSize == 'desktop',
-    'size-2'  : screenSize == 'tablet',
-    'size-1'  : screenSize == 'phone'
-    }">
-    <div class="card" ng-click="mother.getDetails(card)">
-      <div class="rep-logo"> </div>
+    <div deckgrid source="repsSearched" class="deckgrid">
+    <div class="card" ng-click="mother.methods.getDetails(card)">
+      <div class="rep-logo" ng-style="{ 'background-image': 'url(' + card.url + ')' }"> </div>
       <div class="rep-fast-info">
-        <span class="name" ng-bind="::card.name"></span>
-        <span class="status" ng-bind="::card.joker"></span>
+        <h2 class="name" ng-bind="::card.name"></h2>
+        <h6 class="status">Coringa: {{::card.joker}}</h6>
       </div>
     </div>
    </div>

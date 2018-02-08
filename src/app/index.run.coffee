@@ -7,4 +7,3 @@ angular.module 'interreps'
     editableOptions.cancelButtonAriaLabel = "Cancelar"
     editableOptions.submitButtonAriaLabel = "Salvar"
     editableOptions.submitButtonTitle = "Salvar"
-    console.log editableOptions
