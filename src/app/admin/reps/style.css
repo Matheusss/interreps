@@ -22,8 +22,14 @@
   display: inline-block;
   word-wrap: break-word;
   background-color: #fff;
+  transition: background-color .5s;
   background-clip: border-box;
   color: #000;
+  outline: none;
+}
+
+.admin-reps-container .card:hover {
+  background-color: #eaeaea;
 }
 
 .card .rep-logo {

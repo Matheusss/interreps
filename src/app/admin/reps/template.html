@@ -1,5 +1,5 @@
 <div class="admin-reps-container">
-  <div class="row search-row">
+  <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
       <div class="input-search">
         <input type="text" ng-model="search" class="search" placeholder="Pesquisar...">
@@ -7,6 +7,12 @@
     </div>
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2" ng-style="{'margin-top': '10px'}">
       <span>{{reps.length}} repúblicas cadastradas</span>
+    </div>
+  </div>
+  <div class="row search-row">
+    <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10"></div>
+    <div class="col-xs-12 col-sm-4 offset-sm-8 col-md-3 offset-md-9 col-lg-2 offset-lg-12" ng-style="{'margin-top': '10px'}">
+      <button type="button" class="btn btn-outline">Cadastrar nova rep</button>
     </div>
   </div>
   <div class="row">
