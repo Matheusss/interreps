@@ -1,51 +1,63 @@
 angular.module 'interreps'
- .controller 'AdminRepsController', ($rootScope, $scope, $timeout, $interval, $filter, $state) ->
+ .controller 'AdminRepsController', ($rootScope, $scope, $timeout, $interval, $filter, $state, $uibModal) ->
     'ngInject'
 
+    # Definitions
     storage = firebase.storage()
     $scope.reps = $scope.$parent.reps
+    console.log $scope.reps
     $scope.repsSearched = angular.copy $scope.reps
     $rootScope.currentState = _.find $rootScope.menu, (item) -> item.state is $state.current.name
 
-  
-
-    # console.log path
-
-    _.map $scope.reps, (rep) ->      
-
+    _.map $scope.reps, (rep) ->
       storage.ref("logos/#{rep.user}.jpg").getDownloadURL()
       .then (url) ->
         $timeout ->
           $scope.url = url
           rep.url = url
           return rep
-        # , 1000
       if rep.competitions
         joker = _.find rep.competitions, (comp) -> comp.name is 'Coringa'
         rep.joker = joker.team[0]
       else
-        rep.joker = '-' 
+        rep.joker = '-'
 
-    _.map $scope.repsSearched, (rep) ->      
-
+    _.map $scope.repsSearched, (rep) ->
       storage.ref("logos/#{rep.user}.jpg").getDownloadURL()
       .then (url) ->
         $timeout ->
           $scope.url = url
           rep.url = url
           return rep
-        # , 1000
       if rep.competitions
         joker = _.find rep.competitions, (comp) -> comp.name is 'Coringa'
         rep.joker = joker.team[0]
       else
-        rep.joker = '-' 
+        rep.joker = '-'
 
-
+    # Methods
     $scope.methods =
-      selectRep : (rep) ->
-        $scope.selectedRep = rep or undefined
+      getDetails : (rep) ->
+        modalInstance = $uibModal.open(
+          animation: yes
+          windowTemplateUrl: '/app/admin/reps/details/window-template.html'
+          templateUrl: '/app/admin/reps/details/template.html'
+          controller: 'AdminRepsDetailsController'
+          backdrop: 'no'
+          resolve: rep: ->
+            return rep
+        )
 
+      createRep : () ->
+        modalInstance = $uibModal.open(
+          animation: yes
+          windowTemplateUrl: '/app/admin/reps/create/window-template.html'
+          templateUrl: '/app/admin/reps/create/template.html'
+          controller: 'AdminRepsCreateController'
+          backdrop: 'no'
+        )
+
+    # Linteners & Watchers
     $scope.$watch 'search', (newVal, oldval) ->
       if newVal isnt ''
         $scope.repsSearched = $filter('filter')($scope.reps, {name: newVal})

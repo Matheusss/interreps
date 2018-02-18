@@ -43,7 +43,14 @@ angular.module "interreps"
       updateRepCompetitions : (id, competitions) ->
         id = parseInt(id)
         index = id - 1
-        database.ref('reps').child(index).child('competitions').set(competitions)      
+        database.ref('reps').child(index).child('competitions').set(competitions)
+
+      createRep : (rep) ->
+        database.ref('reps').once('value')
+        .then (result) ->
+          repsLength = result.val().length
+          ref = database.ref('reps')
+          ref.child('/' + repsLength).set(rep)
 
 
       # Comps

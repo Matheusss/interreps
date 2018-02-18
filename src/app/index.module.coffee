@@ -12,6 +12,6 @@ angular.module 'interreps', [
   'checklist-model',
   'ui.select',
   'xeditable',
-  'ui.calendar',
-  'akoenig.deckgrid'
+  'akoenig.deckgrid',
+  'ngFileUpload'
 ]

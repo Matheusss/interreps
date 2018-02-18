@@ -14,6 +14,10 @@ body {
   background-size: cover;
 }
 
+h1 {
+  font-size: 30px;
+}
+
 .container {
   width: 80%;
   height: 100%;
@@ -321,13 +325,98 @@ INSERT CSS BELOW
 /* Placeholders */
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #fff;
+  opacity: 0.3;
 }
 ::-moz-placeholder { /* Firefox 19+ */
   color: #fff;
+  opacity: 0.3;
 }
 :-ms-input-placeholder { /* IE 10+ */
   color: #fff;
+  opacity: 0.3;
 }
 :-moz-placeholder { /* Firefox 18- */
   color: #fff;
+  opacity: 0.3;
+}
+
+
+/* Modal */
+
+.window-modal {
+  position            : fixed;
+  background          : rgba(0,0,0,0.75);
+  width               : 100%;
+  height              : 100%;
+  top                 : 0;
+  left                : 0;
+  z-index             : 500;
+  overflow            : hidden;
+  -webkit-perspective : 1000px;
+  perspective         : 1000px;
+  transition          : opacity 0.5s, visibility 0s 0.5s;
+  -webkit-transition  : opacity 0.5s, visibility 0s 0.5s;
+
+}
+
+.window-open .window {
+  opacity             : 1;
+  visibility          : visible;
+  -webkit-transition  : opacity 0.5s;
+  transition          : opacity 0.5s;
+}
+
+.window-inner {
+  width                     : 90%;
+  height                    : 95%;
+  margin                    : auto;
+  -webkit-transform-style   : preserve-3d;
+  transform-style           : preserve-3d;
+  -webkit-transform         : translate3d(0,0,0);
+  transform                 : translate3d(0,0,0);
+  -webkit-transition        : -webkit-transform 0.5s;
+  transition                : transform 0.5s;
+  cursor                    : auto;
+}
+
+.window-inner-large {
+  width                     : 100%;
+  height                    : 100%;
+  -webkit-transform-style   : preserve-3d;
+  transform-style           : preserve-3d;
+  -webkit-transform         : translate3d(0,0,0);
+  transform                 : translate3d(0,0,0);
+  -webkit-transition        : -webkit-transform 0.5s;
+  transition                : transform 0.5s;
+}
+
+.window-header {
+  height: 50px;
+  color: #fff;
+  text-align: center;
+}
+
+.window-content {
+  width     : 100%;
+  height    : calc(100% - 150px);
+  position  : relative;
+  margin-top: 20px;
+  /* left      : 50%;
+  transform : translateX(-50%); */
+  color     : #fff;
+  font-size : 18px;
+  overflow  : auto;
+  /* padding: 20px 20px 0 20px;
+  border: 1px solid #fff;
+  background: rgba(0,0,0,.6); */
+}
+
+.window-footer {
+  position: absolute;
+  bottom: 0;
+}
+
+.window-footer .btn-outline {
+  color: #fff;
+  cursor: pointer;
 }
