@@ -1,0 +1,42 @@
+<div id="modal-rep-create">
+  <div class="window-header">
+    <h1 class="window-description-header">Cadastrar nova república</h1>
+  </div>
+
+    <div class="window-content">
+      <form novalidade class="create-form">
+        <div class="row input-row">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 input-col">
+            <label>Nome:</label>
+            <input type="text" ng-model="rep.name" placeholder="Digite..."/>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 input-col">
+            <label>Email:</label>
+            <input type="text" ng-model="rep.email" placeholder="Digite..."/>
+          </div>
+        </div>
+        <div class="row input-row">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 input-col">
+            <label>Usúario:</label>
+            <input type="text" ng-model="rep.user" placeholder="Digite..."/>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 input-col">
+            <label>Senha:</label>
+            <input type="text" ng-model="rep.password" placeholder="Digite..."/>
+          </div>
+        </div>
+        <div class="row input-row-button">
+          <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+            <button type="button" class="btn btn-outline" ng-click="methods.save()">Salvar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="window-footer">
+      <button type="button" class="btn-outline" ng-click="methods.closeModal()">Fechar</button>
+    </div>
+
+  </form>
+
+</div>

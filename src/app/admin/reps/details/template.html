@@ -1,0 +1,38 @@
+<div id="modal-rep-details">
+  <div class="window-header">
+    <h1 class="window-description-header">República {{rep.name}}</h1>
+  </div>
+
+    <div class="window-content">
+      <table class="table table-striped rep-infos-table">
+        <thead>
+          <tr>
+            <th class="column-1">Provas</th>
+            <th class="column-2">Participantes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-if="rep.competitions.length" ng-repeat="comp in rep.competitions">
+            <td class="column-1">{{comp.name}}</td>
+            <td class="column-2">
+              <ul ng-repeat="part in comp.team">
+                <li>
+                  - {{part}}
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr ng-if="!rep.competitions.length">
+            <td class="no-data-td">Nenhum dado encontrado.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="window-footer">
+      <button type="button" class="btn-outline" ng-click="methods.closeModal()">Fechar</button>
+    </div>
+
+  </form>
+
+</div>

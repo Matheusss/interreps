@@ -1,0 +1,31 @@
+#modal-rep-create {
+  height: 100%;
+  width: 100%;
+}
+
+.create-form {
+  border: 1px solid #fff;
+  height: 100%;
+  background: rgba(0,0,0,.6);
+  padding: 20px;
+  overflow: auto;
+}
+
+.input-row {
+  margin-bottom: 50px;
+}
+
+.input-col {
+  margin-bottom: 50px;
+}
+
+.input-row:first-child {
+  margin-bottom: 10px;
+}
+
+.input-row-button {
+  position: relative;
+  bottom: 30px;
+  width: 100%;
+  /* margin-left: 5px; */
+}
