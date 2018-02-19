@@ -1,5 +1,5 @@
 angular.module 'interreps'
- .controller 'AdminRepsCreateController', ($rootScope, $scope, $timeout, $interval, $filter, $state, FirebaseService) ->
+ .controller 'AdminRepsCreateController', ($rootScope, $scope, $timeout, $interval, $filter, $state, $uibModalStack, FirebaseService) ->
     'ngInject'
 
     # Definitions
@@ -9,6 +9,9 @@ angular.module 'interreps'
     $scope.methods =
       save : ->
         FirebaseService.createRep($scope.rep)
+
+      close : ->
+        $uibModalStack.dismissAll()
 
     # Linteners & Watchers
 

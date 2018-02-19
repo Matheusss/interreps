@@ -26,5 +26,92 @@
     </div>
    </div>
   </div>
-
 </div>
+
+<!-- Details template -->
+<script type="text/ng-template" id="details.html">
+  <div id="modal-rep-details">
+    <div class="window-header">
+      <h1 class="window-description-header">República {{rep.name}}</h1>
+    </div>
+      <div class="window-content">
+        <table class="table table-striped rep-infos-table">
+          <thead>
+            <tr>
+              <th class="column-1">Provas</th>
+              <th class="column-2">Participantes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-if="rep.competitions.length" ng-repeat="comp in rep.competitions">
+              <td class="column-1">{{comp.name}}</td>
+              <td class="column-2">
+                <ul ng-repeat="part in comp.team">
+                  <li>
+                    - {{part}}
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr ng-if="!rep.competitions.length">
+              <td class="no-data-td">Nenhum dado encontrado.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="window-footer">
+        <button type="button" class="btn-outline" ng-click="methods.close()">Fechar</button>
+      </div>
+    </form>
+  </div>
+</script>
+
+<!-- Create template -->
+<script type="text/ng-template" id="create.html">
+  <div id="modal-rep-create">
+    <div class="window-header">
+      <h1 class="window-description-header">Cadastrar nova república</h1>
+    </div>
+      <div class="window-content">
+        <form novalidade class="create-form">
+          <div class="row input-row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 input-col">
+              <label>Nome:</label>
+              <input type="text" ng-model="rep.name" placeholder="Digite..."/>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 input-col">
+              <label>Email:</label>
+              <input type="text" ng-model="rep.email" placeholder="Digite..."/>
+            </div>
+          </div>
+          <div class="row input-row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 input-col">
+              <label>Usúario:</label>
+              <input type="text" ng-model="rep.user" placeholder="Digite..."/>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 input-col">
+              <label>Senha:</label>
+              <input type="text" ng-model="rep.password" placeholder="Digite..."/>
+            </div>
+          </div>
+          <div class="row input-row-button">
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+              <button type="button" class="btn btn-outline" ng-click="methods.save()">Salvar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="window-footer">
+        <button type="button" class="btn-outline" ng-click="methods.close()">Fechar</button>
+      </div>
+    </form>
+  </div>
+</script>
+
+<!-- Window template -->
+<script type="text/ng-template" id="window-template.html">
+<div id="create-bordero" class="window-modal" modal-in-class="window-open" ng-style="{'z-index': 1000, display: 'block'}" ng-click="close($event)">
+  <div class="window-inner" ng-transclude></div>
+</div>
+
+</script>

@@ -37,8 +37,8 @@ angular.module 'interreps'
       getDetails : (rep) ->
         modalInstance = $uibModal.open(
           animation: yes
-          windowTemplateUrl: '/app/admin/reps/details/window-template.html'
-          templateUrl: '/app/admin/reps/details/template.html'
+          windowTemplateUrl: 'window-template.html'
+          templateUrl: 'details.html'
           controller: 'AdminRepsDetailsController'
           backdrop: 'no'
           resolve: rep: ->
@@ -48,8 +48,8 @@ angular.module 'interreps'
       createRep : () ->
         modalInstance = $uibModal.open(
           animation: yes
-          windowTemplateUrl: '/app/admin/reps/create/window-template.html'
-          templateUrl: '/app/admin/reps/create/template.html'
+          windowTemplateUrl: 'window-template.html'
+          templateUrl: 'create.html'
           controller: 'AdminRepsCreateController'
           backdrop: 'no'
         )
