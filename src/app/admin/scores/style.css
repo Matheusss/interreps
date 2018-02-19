@@ -1,0 +1,29 @@
+.scores-container {
+  height: 90%;
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+  /* background: rgba(255,255,255, 0.4); */
+  padding: 10px;
+}
+
+.scores-container div {
+  /* height: 100%; */
+  /* width: 100%; */
+}
+
+.all-comps-results {
+  margin-top: 20px;
+}
+
+.all-comps-results  select {
+  height: 30px;
+  background-color: transparent;
+  outline: none;
+  border: 2px solid #fff;
+}
+
+.select-comp {
+  /* width: 100%!important; */
+  height: 50px!important;
+}

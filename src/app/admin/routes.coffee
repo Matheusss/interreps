@@ -21,25 +21,26 @@ angular.module 'interreps'
         templateUrl: 'app/admin/reps/template.html'
         controller: 'AdminRepsController'
 
-      # .state 'admin.rep-create',
-      #   url: '/reps/new'
-      #   templateUrl: 'app/admin/reps/create/template.html'
-      #   controller: 'AdminRepsCreateController'
-      #
-      # .state 'admin.rep-details',
-      #   url: '/reps/details/:id'
-      #   params: { id: null }
-      #   templateUrl: 'app/admin/reps/details/template.html'
-      #   controller: 'AdminRepsDetailsController'
-      #   resolve :
-      #      rep: ['FirebaseService', '$stateParams', (FirebaseService, $stateParams) ->
-      #         FirebaseService.getRepById($stateParams.id)
-      #       ]
-
       .state 'admin.schedules',
         url: '/schedules'
         templateUrl: 'app/admin/schedules/template.html'
         controller: 'AdminSchedulesController'
+
+      .state 'admin.scores',
+        url: '/scores'
+        templateUrl: 'app/admin/scores/template.html'
+        controller: 'AdminScoresController'
+        resolve :
+           reps: ['FirebaseService', (FirebaseService) ->
+              FirebaseService.getAllReps()
+            ]
+           competitions: ['FirebaseService', (FirebaseService) ->
+              FirebaseService.getAllCompetitions()
+            ]
+
+           allCompetitionsArray: ['FirebaseService', (FirebaseService) ->
+              FirebaseService.getCompetitionsArray()
+            ]
 
       .state 'admin.rules',
         url: '/rules'

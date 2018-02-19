@@ -5,7 +5,6 @@ angular.module 'interreps'
     # Definitions
     storage = firebase.storage()
     $scope.reps = $scope.$parent.reps
-    console.log $scope.reps
     $scope.repsSearched = angular.copy $scope.reps
     $rootScope.currentState = _.find $rootScope.menu, (item) -> item.state is $state.current.name
 
@@ -13,12 +12,11 @@ angular.module 'interreps'
       storage.ref("logos/#{rep.user}.jpg").getDownloadURL()
       .then (url) ->
         $timeout ->
-          $scope.url = url
           rep.url = url
           return rep
       if rep.competitions
         joker = _.find rep.competitions, (comp) -> comp.name is 'Coringa'
-        rep.joker = joker.team[0]
+        rep.joker = if joker then joker.team[0] else ''
       else
         rep.joker = '-'
 
@@ -26,12 +24,11 @@ angular.module 'interreps'
       storage.ref("logos/#{rep.user}.jpg").getDownloadURL()
       .then (url) ->
         $timeout ->
-          $scope.url = url
           rep.url = url
           return rep
       if rep.competitions
         joker = _.find rep.competitions, (comp) -> comp.name is 'Coringa'
-        rep.joker = joker.team[0]
+        rep.joker = if joker then joker.team[0] else ''
       else
         rep.joker = '-'
 

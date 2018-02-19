@@ -244,20 +244,28 @@ label {
   color: #ffffff;
 }
 
-/* Ui Select */
-.ui-select-container {
-  /* width: 30%; */
+.ui-select-clear {
+  height: 100%;
+  background: 0;
+  border: 0;
+  cursor: pointer;
+  vertical-align: middle;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute!important;
+  right: 15px;
+  outline: none;
+  font-size: 16px;
+  z-index: 9999;
 }
 
-/* Do not remove the imports bellow */
+.ui-select-clear:hover {
+  font-weight: bolder;
+  color: #000;
+  font-size: 18px;
+}
 
-/*
-================================
-================================
-INSERT CSS BELOW
-================================
-================================
-*/
+/* Ui Select */
 .ui-select-multiple.ui-select-bootstrap {
   padding: 0;
 }
@@ -321,6 +329,11 @@ INSERT CSS BELOW
   background-color: black;
   cursor: pointer;
 }
+
+.ui-select-bootstrap .ui-select-match-text span {
+  width: 80%;
+}
+
 
 /* Placeholders */
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -419,4 +432,23 @@ INSERT CSS BELOW
 .window-footer .btn-outline {
   color: #fff;
   cursor: pointer;
+}
+
+
+
+
+/* Tabs */
+.nav-tabs > li > a {
+  color: black;
+  font-weight: bold;
+}
+
+.nav-tabs > li > a:hover {
+  background: rgba(255,255,255,.2);
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  background: rgba(255,255,255,.5);
+  color: black;
+  font-weight: bold;
 }

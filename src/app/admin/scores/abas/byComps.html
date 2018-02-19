@@ -1,0 +1,39 @@
+<div class="all-comps-results">
+  <div class="row">
+    <div class="col-xs-8 col-sm-3 col-md-3 col-lg-2 select-comp">
+      <select name="comp-select" id="comp-select" ng-model="selectedCompetition">
+        <option value="" disabled selected>Selecione</option>
+        <option ng-repeat="item in allCompetitionsArray" value="{{item}}">{{item.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-striped rep-infos-table">
+      <thead>
+        <tr>
+          <th class="column-1">Posição</th>
+          <th class="column-2">Rep</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-if="leaderboard.length" ng-repeat="position in leaderboard">
+          <td class="column-1">#{{$index + 1}}</td>
+          <td class="column-2">
+            <ui-select ng-model="position.rep" theme="bootstrap" on-select="methods.validateRepsAdded($item)">
+              <ui-select-match >
+                  <span ng-bind="$select.selected.name"></span>
+                  <button class="ui-select-clear" ng-click="methods.validateRepsRemoved($event, $select.selected, $index)"> &#10006; </button>
+              </ui-select-match>
+              <ui-select-choices ui-disable-choice="selectedReps.indexOf(rep) > -1" repeat="rep in reps | filter: $select.search track by $index">
+                  <span ng-bind="rep.name"></span>
+              </ui-select-choices>
+          </ui-select>
+          </td>
+        </tr>
+        <tr ng-if="!leaderboard.length">
+          <td class="no-data-td">Nenhum dado encontrado.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
