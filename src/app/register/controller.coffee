@@ -6,7 +6,7 @@ angular.module 'interreps'
     $scope.rep = rep
     $scope.allCompetitions = competitions
     $scope.prices = prices
-    $scope.totalCost = 0
+    $scope.totalCost = $scope.rep.totalCost or 0
     $scope.selectedPrice = {}
     $scope.img = "../assets/images/#{$scope.rep.user}.jpg"
     $scope.selectedCompetitions = $scope.rep.competitions or []
@@ -37,20 +37,10 @@ angular.module 'interreps'
 
       save : () ->
         console.log $scope.participants
-        # FirebaseService.updateRepParticipants($scope.rep.id, $scope.participants)
-        # FirebaseService.updateRepCompetitions($scope.rep.id, $scope.selectedCompetitions)
+        FirebaseService.updateRepParticipants($scope.rep.id, $scope.participants)
+        FirebaseService.updateRepCompetitions($scope.rep.id, $scope.selectedCompetitions)
+        FirebaseService.updateRepTotalCost($scope.rep.id, $scope.totalCost)
 
-      # changePrice : ->
-      #   $scope.selectedCompetitions.splice(0, $scope.selectedCompetitions.length)
-      #   console.log $scope.selectedPrice
-      #   if $scope.selectedPrice
-      #     if $scope.futebolPrices.indexOf(JSON.parse($scope.selectedPrice).name) > -1
-      #       futebol = _.find $scope.allCompetitions.sports, (sport) -> sport.name is 'Futebol'
-      #       $scope.selectedCompetitions.push futebol
-      #
-      #     if $scope.queimadaPrices.indexOf(JSON.parse($scope.selectedPrice).name) > -1
-      #       queimada = _.find $scope.allCompetitions.sports, (sport) -> sport.name is 'Queimada'
-      #       $scope.selectedCompetitions.push queimada
 
 
     # Listeners & Watchers

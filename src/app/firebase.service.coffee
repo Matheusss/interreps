@@ -52,6 +52,11 @@ angular.module "interreps"
         index = id - 1
         database.ref('reps').child(index).child('participants').set(participants)
 
+      updateRepTotalCost : (id, totalCost) ->
+        id = parseInt(id)
+        index = id - 1
+        database.ref('reps').child(index).child('totalCost').set(totalCost)
+
       createRep : (rep) ->
         database.ref('reps').once('value')
         .then (result) ->
