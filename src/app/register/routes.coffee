@@ -15,3 +15,6 @@ angular.module 'interreps'
            competitions: ['FirebaseService', (FirebaseService) ->
               FirebaseService.getAllCompetitions()
             ]
+           prices: ['FirebaseService', (FirebaseService) ->
+              FirebaseService.getPrices()
+            ]

@@ -130,7 +130,7 @@
 }
 
 .register-form {
-  height: 65%;
+  height: 75%;
   width: 100%;
   margin-top: 20px;
   display: inline-block;
@@ -220,6 +220,10 @@
 .custom-checkboxes input[type="checkbox"]:checked ~ .checked {
   display: inline;
   color: #fff;
+}
+
+.custom-checkboxes input[type=checkbox]:disabled {
+  color: red!important;
 }
 
 .selects {

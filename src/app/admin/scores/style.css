@@ -16,11 +16,16 @@
   margin-top: 20px;
 }
 
-.all-comps-results  select {
+select {
   height: 30px;
   background-color: transparent;
   outline: none;
   border: 2px solid #fff;
+}
+
+.select-options {
+  color: #000;
+  background: #fff;
 }
 
 .select-comp {

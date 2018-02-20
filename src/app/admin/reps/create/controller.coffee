@@ -4,10 +4,12 @@ angular.module 'interreps'
 
     # Definitions
     $scope.rep = {}
+    $scope.repsLength = FirebaseService.getAllReps().length
 
     # Methods
     $scope.methods =
       save : ->
+        $scope.rep.id = $scope.repsLength + 1
         FirebaseService.createRep($scope.rep)
 
       close : ->

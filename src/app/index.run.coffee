@@ -1,9 +1,10 @@
 angular.module 'interreps'
-  .run ($log, editableOptions) ->
+  .run ($log, $rootScope, $state, StorageService) ->
     'ngInject'
     $log.debug 'runBlock end'
 
-    editableOptions.cancelButtonTitle = 'Cancelar'
-    editableOptions.cancelButtonAriaLabel = "Cancelar"
-    editableOptions.submitButtonAriaLabel = "Salvar"
-    editableOptions.submitButtonTitle = "Salvar"
+    $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams, options) ->
+      console.log StorageService.getCurrentUser()
+      if !StorageService.getCurrentUser() and fromState.name isnt ''
+        # event.preventDefault()
+        $state.go 'home'

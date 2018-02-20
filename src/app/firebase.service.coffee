@@ -103,4 +103,11 @@ angular.module "interreps"
       updateRules : (rules) ->
         database.ref('rules').set(rules)
 
+
+      # Prices
+      getPrices : () ->
+        database.ref('prices').once('value')
+        .then (result) ->
+          return result.val()
+
     }
