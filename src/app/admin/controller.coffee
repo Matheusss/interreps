@@ -1,11 +1,14 @@
 angular.module 'interreps'
- .controller 'AdminController', ($rootScope, $scope, $state, $timeout, $interval, user, reps) ->
+ .controller 'AdminController', ($rootScope, $scope, $state, $timeout, $interval, $localStorage, StorageService, user, reps) ->
     'ngInject'
 
     $scope.state = $state
+    $scope.$storage = $localStorage
     $scope.user = user
     $scope.reps = reps
-    $scope.status = 
+    $scope.status =
+     isopen: no
+    $scope.logout =
      isopen: no
     $scope.img  = "../assets/images/#{$scope.user.user}.png"
     $rootScope.menu = [
@@ -33,6 +36,9 @@ angular.module 'interreps'
 
     $rootScope.currentState = _.find $rootScope.menu, (item) -> item.state is $scope.state.current.name
 
-    $scope.methods = {}
+    $scope.methods =
+      logout : () ->
+        StorageService.deleteCurrentUser()
+        $state.go 'home', {logout: yes}
 
     return

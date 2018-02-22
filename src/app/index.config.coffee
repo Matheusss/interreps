@@ -3,9 +3,16 @@ angular.module 'interreps'
     'ngInject'
     # Enable log
     $logProvider.debugEnabled true
-    # Set options third-party lib
-    toastrConfig.allowHtml = true
-    toastrConfig.timeOut = 3000
-    toastrConfig.positionClass = 'toast-top-right'
-    toastrConfig.preventDuplicates = true
-    toastrConfig.progressBar = true
+
+    angular.extend toastrConfig,
+      autoDismiss           : yes
+      closeButton           : yes
+      progressBar           : yes
+      preventDuplicates     : no
+      preventOpenDuplicates : yes
+      newestOnTop           : yes
+      maxOpened             : 2
+      timeOut               : 5000
+      extendedTimeOut       : 5000
+      positionClass         : 'toast-top-right'
+      target                : 'body'

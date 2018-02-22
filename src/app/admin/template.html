@@ -15,19 +15,30 @@
         </ul>
 
       <div class="btn-group ul-options-dropdown" uib-dropdown is-open="status.isopen" uib-dropdown dropdown-append-to-body>
-      <button id="single-button" type="button" class="btn btn-outline" uib-dropdown-toggle >
-        {{currentState.name}} <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-        <li role="menuitem" ng-repeat="item in menu" ng-class="{'active' : state.current.name === item.state}"><a ui-sref="{{item.state}}">{{item.name}}</a></li>
-      </ul>
-    </div>
+        <button id="single-button" type="button" class="btn btn-outline" uib-dropdown-toggle >
+          {{currentState.name}} <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <li role="menuitem" ng-repeat="item in menu" ng-class="{'active' : state.current.name === item.state}"><a ui-sref="{{item.state}}">{{item.name}}</a></li>
+        </ul>
+      </div>
       </div>
       <div class="user-info">
         <div class="rep-logo" ng-style="{ 'background-image': 'url(' + img + ')' }"></div>
         <div class="rep-name">
           <div class="rep-name-container">
-            <span class="name">{{user.name}}</span>
+            <div class="rep-name-container-cell">
+              <div class="btn-group ul-options-dropdown" uib-dropdown is-open="logout.isopen" uib-dropdown dropdown-append-to-body>
+              <button id="single-button" type="button" class="icon-btn" uib-dropdown-toggle >
+                <span class="rep-name-label">{{user.name}}</span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                <li role="menuitem"><a ng-click="methods.logout()" style="cursor: pointer;">logout</a></li>
+              </ul>
+            </div>
+
+            </div>
           </div>
         </div>
       </div>

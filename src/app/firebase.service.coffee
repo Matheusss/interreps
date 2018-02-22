@@ -60,9 +60,9 @@ angular.module "interreps"
       createRep : (rep) ->
         database.ref('reps').once('value')
         .then (result) ->
-          repsLength = result.val().length
+          index = result.val().length
           ref = database.ref('reps')
-          ref.child('/' + repsLength).set(rep)
+          ref.child('/' + index).set(rep)
 
       # Comps
       getAllCompetitions : () ->

@@ -4,6 +4,8 @@ angular.module 'interreps'
     $stateProvider
       .state 'home',
         url: '/'
+        params:
+          logout : null
         templateUrl: 'app/main/template.html'
         controller: 'MainController'
         controllerAs: 'main'

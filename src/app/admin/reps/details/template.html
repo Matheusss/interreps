@@ -17,7 +17,10 @@
             <td class="column-2">
               <ul ng-repeat="part in comp.team">
                 <li>
-                  - {{part}}
+                  <pre>
+                    {{comp.team | json}}
+                  </pre>
+                  - {{part.name}}
                 </li>
               </ul>
             </td>

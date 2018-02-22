@@ -5,13 +5,13 @@ angular.module "interreps"
 
       # Users
       getCurrentUser : () ->
-        return $rootScope.currentUser || $localStorage.user
+        return $localStorage.user 
 
       setCurrentUser : (user) ->
-        return $rootScope.currentUser = user
+        return $localStorage.user = user
 
       deleteCurrentUser : () ->
-        return $rootScope.currentUser = undefined
+        return $localStorage.user = {}
 
 
     }

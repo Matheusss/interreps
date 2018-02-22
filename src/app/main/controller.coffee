@@ -19,7 +19,7 @@ angular.module 'interreps'
         return
       ), scope.interval or 1000)
 
- .controller 'MainController', ($rootScope, $scope, $state, $timeout, $interval, $localStorage, FirebaseService, StorageService, users, reps) ->
+ .controller 'MainController', ($rootScope, $scope, $state, $timeout, $interval, $localStorage, FirebaseService, StorageService, toastr, users, reps) ->
     'ngInject'
 
     $scope.users = users
@@ -41,18 +41,21 @@ angular.module 'interreps'
         currentRep  = _.find $scope.reps, (rep) -> rep.user is $scope.user.user and rep.password is $scope.user.password
 
         if currentUser
-          $scope.$storage.user = {type: 'admin', user: currentUser}
-          StorageService.setCurrentUser(currentUser)
+          user = {type: 'admin', user: currentUser}
+          StorageService.setCurrentUser(user)
           $timeout () ->
             $state.go 'admin.reps', {id: currentUser.id}
           , 1000
 
         if currentRep
-          $scope.$storage.user = {type: 'rep', user: currentRep}
-          StorageService.setCurrentUser(currentRep)
+          user = {type: 'rep', user: currentRep}
+          StorageService.setCurrentUser(user)
           $timeout () ->
             $state.go 'register', {id: currentRep.id}
           , 1000
+
+        if !currentUser and !currentRep
+          toastr.error 'Login e/ou senha inválido(s)'
 
 
     return

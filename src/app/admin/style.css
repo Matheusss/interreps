@@ -99,7 +99,7 @@
   /* zoom: 1;
   font-size: 0; */
   height: 100%;
-  width: 100%;
+  width: auto;
 }
 
 .ul-options-dropdown .btn-outline {
@@ -112,6 +112,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  position: relative;
 }
 
 .ul-options {
@@ -182,13 +183,6 @@
   color: #000;
 }
 
-.menu-item .name {
-  margin-left: 5px;
-}
-
-
-
-
 .user-info {
   width: 20%;
   height: 100%;
@@ -232,9 +226,13 @@
   display: table-row;
 }
 
-.rep-name-container .name {
+.rep-name-container-cell {
   display: table-cell;
   vertical-align: middle;
+}
+
+.rep-name-label {
+  margin-right: 5px;
 }
 
 .admin-parent-container {
@@ -254,4 +252,12 @@
   width: 20%;
   float: right;
   margin: 20px 0;
+}
+
+.toast-custom-title {
+  display: inline-block;
+  font-size:20px;
+  margin-bottom:10px;
+  padding-left:40px;
+  letter-spacing:1;
 }

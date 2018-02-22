@@ -1,16 +1,20 @@
 angular.module 'interreps'
- .controller 'AdminRepsCreateController', ($rootScope, $scope, $timeout, $interval, $filter, $state, $uibModalStack, FirebaseService) ->
+ .controller 'AdminRepsCreateController', ($rootScope, $scope, $timeout, $interval, $filter, $state, $uibModalStack, FirebaseService, toastr, reps) ->
     'ngInject'
 
     # Definitions
     $scope.rep = {}
-    $scope.repsLength = FirebaseService.getAllReps().length
+    $scope.reps = reps
 
     # Methods
     $scope.methods =
       save : ->
-        $scope.rep.id = $scope.repsLength + 1
+        $scope.rep.id = $scope.reps.length + 1
         FirebaseService.createRep($scope.rep)
+        toastr.success 'República criada com sucesso'
+        $timeout () ->
+          $scope.methods.close()
+        , 500
 
       close : ->
         $uibModalStack.dismissAll()
