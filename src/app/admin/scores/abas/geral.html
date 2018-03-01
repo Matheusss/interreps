@@ -1,1 +1,49 @@
-geral
+<div class="all-comps-results">
+  <table class="table classification-table">
+    <colgroup>
+      <col class="table-times-col-posicao"/>
+      <col class="table-times-col-rep"/>
+    </colgroup>
+    <thead>
+      <tr class="table-head-line">
+        <th>
+          Classificação
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-body-line" ng-repeat="rep in reps | orderBy: '-points' track by $index">
+        <td class="rep-position">
+          {{$index + 1}}
+        </td>
+        <td class="rep-name-position">
+          <span>{{rep.name}}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="table-scroll">
+    <table class="table points-table">
+      <thead>
+        <tr class="table-head-line">
+          <th>
+            Pontos
+          </th>
+          <th ng-repeat="competition in allCompetitionsArray | orderBy: 'name'">
+            <a uib-tooltip="{{competition.name}}" tooltip-append-to-body="true">{{competition.initials}}</a>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-body-line" ng-repeat="rep in updatedReps | orderBy: '-points' track by $index">
+          <td class="rep-points">
+            <b>{{rep.points}}</b>
+          </td>
+          <td class="rep-points" ng-repeat="competition in rep.competitions | orderBy: 'name' track by $index">
+            <span>{{competition.points ? competition.points : 0}}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

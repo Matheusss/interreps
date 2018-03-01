@@ -1,13 +1,13 @@
 <div class="all-comps-results">
   <div class="row">
     <div class="col-xs-8 col-sm-3 col-md-3 col-lg-2 select-comp">
-      <select name="comp-select" id="comp-select" ng-model="selectedCompetition">
+      <select name="comp-select" id="comp-select" ng-model="selectedCompetition" ng-change="methods.changeSelectedCompetition(selectedCompetition)">
         <option value="" disabled selected>Selecione</option>
-        <option ng-repeat="item in allCompetitionsArray" value="{{item}}">{{item.name}}</option>
+        <option ng-repeat="item in allCompetitionsArray track by item.name" value="{{item}}">{{item.name}}</option>
       </select>
     </div>
   </div>
-  <div class="row">
+  <div class="row" ng-if="selectedCompetition">
     <table class="table table-striped rep-infos-table">
       <thead>
         <tr>
@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-if="leaderboard.length" ng-repeat="position in leaderboard">
+        <tr ng-if="leaderboard.length" ng-repeat="position in leaderboard track by $index">
           <td class="column-1">#{{$index + 1}}</td>
           <td class="column-2">
             <ui-select ng-model="position.rep" theme="bootstrap" on-select="methods.validateRepsAdded($item)">
@@ -35,5 +35,8 @@
         </tr>
       </tbody>
     </table>
+    <div class="row save-btn-row">
+      <button type="button" class="btn btn-outline" ng-click="methods.saveLeaderboad(selectedCompetition)">Salvar</button>
+    </div>
   </div>
 </div>

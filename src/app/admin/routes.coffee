@@ -42,6 +42,10 @@ angular.module 'interreps'
               FirebaseService.getCompetitionsArray()
             ]
 
+           points: ['FirebaseService', (FirebaseService) ->
+              FirebaseService.updatePoints()
+            ]
+
       .state 'admin.rules',
         url: '/rules'
         templateUrl: 'app/admin/rules/template.html'

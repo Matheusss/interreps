@@ -10,6 +10,7 @@
 .scores-container div {
   /* height: 100%; */
   /* width: 100%; */
+  position: relative;
 }
 
 .all-comps-results {
@@ -31,4 +32,109 @@ select {
 .select-comp {
   /* width: 100%!important; */
   height: 50px!important;
+}
+
+.classification-table {
+  width: 200px;
+  font-size: 17px;
+  box-shadow: 1px 0 0 0 rgba(153,153,153,.25);
+  position: absolute;
+  table-layout: fixed;
+  z-index: 10;
+  background-color: #fff;
+  color: #000;
+}
+
+.table-times-col-posicao {
+  width: 25px;
+}
+
+.table-times-col-rep {
+  width: auto;
+}
+
+.table-head-line {
+  border-bottom: 1px solid #c0c0c0;
+  border-top: 1px solid #ddd;
+  color: #999;
+  font-size: 11px;
+  height: 40px;
+  font-family: proximanova-regular;
+}
+
+.table-head-line th {
+  line-height: 10px;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: -.3px;
+  vertical-align: middle;
+  padding: 0 17px;
+  white-space: nowrap;
+}
+
+.table-body-line {
+  border-bottom: 1px solid #ddd;
+  height: 50px;
+}
+
+.table-body-line .rep-position{
+  color: #999;
+  background-color: #fcfcfc;
+  line-height: 14px;
+  letter-spacing: -2px;
+  display: table-cell;
+  vertical-align: middle
+}
+
+.table-body-line .rep-name-position {
+  background-color: #fcfcfc;
+  line-height: 14px;
+  vertical-align: middle;
+  letter-spacing: -1px;
+}
+
+.table-body-line .rep-name-position span {
+  height: 54px;
+  width: 200px;
+  color: #333;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.table-scroll {
+  opacity: 1;
+  padding-left: 200px;
+  overflow: auto;
+  position: relative;
+  z-index: 5;
+}
+
+.points-table {
+  width: 100%;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.table-body-line .rep-points {
+  background-color: #fcfcfc;
+  line-height: 14px;
+  vertical-align: middle;
+  letter-spacing: -1px;
+  width: 20px;
+}
+
+.table-body-line .rep-points span {
+  height: 54px;
+  width: 200px;
+  color: #333;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.table-body-line .rep-points b {
+  height: 54px;
+  width: 200px;
+  color: #333;
+  display: table-cell;
+  vertical-align: middle;
 }

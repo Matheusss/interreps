@@ -3,7 +3,7 @@ angular.module "interreps"
     database = firebase.database()
     auth    = firebase.auth()
 
-    return {
+    service = {
 
       # Users
       getCurrentAuthuser : () ->
@@ -26,6 +26,12 @@ angular.module "interreps"
       getAllReps : () ->
         database.ref('reps').once('value')
         .then (result) ->
+          return result.val()
+
+      getAllRepsOrderedByPoints : () ->
+        database.ref('reps').orderByKey('points')
+        .then (result) ->
+          console.log result.val()
           return result.val()
 
       getRepById : (id) ->
@@ -57,6 +63,11 @@ angular.module "interreps"
         index = id - 1
         database.ref('reps').child(index).child('totalCost').set(totalCost)
 
+      updateRepPoints : (id, points) ->
+        id = parseInt(id)
+        index = id - 1
+        database.ref('reps').child(index).child('points').set(points)
+
       createRep : (rep) ->
         database.ref('reps').once('value')
         .then (result) ->
@@ -87,17 +98,21 @@ angular.module "interreps"
         database.ref('allCompetitions').once('value')
         .then (result) ->
           index = _.findIndex result.val(), (item) -> item.name is key
-
+          allCompetitions = result.val()
+          compAllIndex = _.findIndex allCompetitions, (comp) -> comp.name is key
           # set competition leaderboard
           database.ref('allCompetitions').child(index).child('leaderboard').set(leaderboard)
           .then (result) ->
             _.each leaderboard, (register) ->
-              i = _.findIndex reps, (rep) -> rep.name is register.rep
-              rep = _.find reps, (rep) -> rep.name is register.rep
-              compIndex = _.findIndex rep.competitions, (comp) -> comp.name is key
+              if register.rep isnt {}
+                i = _.findIndex reps, (rep) -> rep.name is register.rep.name
+                rep = _.find reps, (rep) -> rep.name is register.rep.name
+                compIndex = _.findIndex rep.competitions, (comp) -> comp.name is key
+                if i isnt -1 and compIndex isnt -1
+                  database.ref('reps').child(i).child('competitions').child(compIndex).child('position').set(register.position)
+                  database.ref('reps').child(i).child('competitions').child(compIndex).child('points').set(allCompetitions[compAllIndex].points[register.position - 1])
 
-              database.ref('reps').child(i).child('competitions').child(compIndex).child('position').set(register.position)
-
+        service.updatePoints()
 
       # Rules
       getRules : () ->
@@ -115,4 +130,25 @@ angular.module "interreps"
         .then (result) ->
           return result.val()
 
+
+      # Leaderboard
+      updatePoints : ->
+        $q.all({
+          reps         : service.getAllReps()
+          competitions : service.getCompetitionsArray()
+        })
+        .then (result) ->
+          reps = result.reps
+          competitions = result.competitions
+
+          _.each reps, (rep) ->
+            rep.points = 0
+            _.each competitions, (comp) ->
+              if comp.leaderboard
+                _.each comp.leaderboard, (item) ->
+                  if item.rep and rep.name is item.rep.name
+                    rep.points += comp.points[item.position - 1]
+            service.updateRepPoints(rep.id, rep.points)
     }
+
+    return service
