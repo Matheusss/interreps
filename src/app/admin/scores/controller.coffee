@@ -36,6 +36,7 @@ angular.module 'interreps'
           _.each $scope.allCompetitionsArray, (comp) ->
            index = _.findIndex rep.competitions, (c) -> c.name is comp.name
            if index is -1
+             rep.competitions = rep.competitions || []
              rep.competitions.push({
                name: comp.name
                })

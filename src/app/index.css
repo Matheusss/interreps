@@ -244,6 +244,11 @@ label {
   color: #ffffff;
 }
 
+select option {
+  color: #000;
+  background: #fff;
+}
+
 .ui-select-clear {
   height: 100%;
   background: 0;
