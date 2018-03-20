@@ -107,10 +107,11 @@ angular.module "interreps"
               if register.rep isnt {}
                 i = _.findIndex reps, (rep) -> rep.name is register.rep.name
                 rep = _.find reps, (rep) -> rep.name is register.rep.name
-                compIndex = _.findIndex rep.competitions, (comp) -> comp.name is key
-                if i isnt -1 and compIndex isnt -1
-                  database.ref('reps').child(i).child('competitions').child(compIndex).child('position').set(register.position)
-                  database.ref('reps').child(i).child('competitions').child(compIndex).child('points').set(allCompetitions[compAllIndex].points[register.position - 1])
+                if rep
+                  compIndex = _.findIndex rep.competitions, (comp) -> comp.name is key
+                  if i isnt -1 and compIndex isnt -1
+                    database.ref('reps').child(i).child('competitions').child(compIndex).child('position').set(register.position)
+                    database.ref('reps').child(i).child('competitions').child(compIndex).child('points').set(allCompetitions[compAllIndex].points[register.position - 1])
 
         service.updatePoints()
 

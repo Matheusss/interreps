@@ -1,4 +1,21 @@
 <div class="all-comps-results">
+  <div class="row filters">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 input-col">
+      <label>Gênero:</label>
+      <select name="genre-select" id="genre-select" ng-model="filter.genre">
+        <option value="G" selected>Geral</option>
+        <option value="F">Feminino</option>
+      </select>
+    </div>
+    <!-- <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 input-col">
+      <label>Provas:</label>
+      <select name="genre-select" id="genre-select" ng-model="filter.competitions">
+        <option value="T" selected>Todas</option>
+        <option value="A">Alcoolicas</option>
+        <option value="NA">Não alcoolicas</option>
+      </select>
+    </div> -->
+  </div>
   <table class="table classification-table">
     <colgroup>
       <col class="table-times-col-posicao"/>
@@ -6,16 +23,12 @@
     </colgroup>
     <thead>
       <tr class="table-head-line">
-        <th>
-          Classificação
-        </th>
+        <th>Classificação</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="table-body-line" ng-repeat="rep in reps | orderBy: '-points' track by $index">
-        <td class="rep-position">
-          {{$index + 1}}
-        </td>
+      <tr class="table-body-line" ng-repeat="rep in reps | orderBy: '-points' | filter: methods.genreFilter track by $index">
+        <td class="rep-position">{{$index + 1}}</td>
         <td class="rep-name-position">
           <span>{{rep.name}}</span>
         </td>
@@ -26,18 +39,16 @@
     <table class="table points-table">
       <thead>
         <tr class="table-head-line">
-          <th>
-            Pontos
-          </th>
-          <th ng-repeat="competition in allCompetitionsArray | orderBy: 'name'">
+          <th>Pontos</th>
+          <th ng-repeat="competition in allCompetitionsArray | orderBy: 'name' | filter: methods.competitionFilter">
             <a uib-tooltip="{{competition.name}}" tooltip-append-to-body="true">{{competition.initials}}</a>
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr class="table-body-line" ng-repeat="rep in updatedReps | orderBy: '-points' track by $index">
+        <tr class="table-body-line" ng-repeat="rep in updatedReps | orderBy: '-points' | filter: methods.genreFilter track by $index">
           <td class="rep-points">
-            <b>{{rep.points}}</b>
+            <b>{{rep.points || 0}}</b>
           </td>
           <td class="rep-points" ng-repeat="competition in rep.competitions | orderBy: 'name' track by $index">
             <span>{{competition.points ? competition.points : 0}}</span>

@@ -10,6 +10,9 @@ angular.module 'interreps'
     $scope.selectedCompetition = {}
     $scope.selectedReps = []
     $scope.leaderboard = []
+    $scope.filter =
+      genre : 'G'
+      competitions: 'T'
 
     # console.log $scope.reps
 
@@ -41,6 +44,14 @@ angular.module 'interreps'
                name: comp.name
                })
 
+      validateReps : (rep) ->
+        $scope.selectedReps = $scope.selectedReps or []
+        _.each $scope.selectedCompetition.leaderboard, (item) -> $scope.selectedReps.push item.rep
+        comp = _.find rep.competitions, (item) -> item.name is $scope.selectedCompetition.name
+        isRep = _.find $scope.selectedReps, (item) -> item and item.name is rep.name
+        if isRep or !comp
+          return yes
+
       validateRepsAdded : (rep) ->
         if rep
           $scope.selectedReps.push rep
@@ -67,6 +78,23 @@ angular.module 'interreps'
         competition = JSON.parse competition
         FirebaseService.updateLeaderboard(competition.name, $scope.leaderboard)
         toastr.success 'Classificação salva com sucesso'
+
+      genreFilter : (item) ->
+        if $scope.filter.genre is 'G'
+          return item
+        else
+          return item.genre is $scope.filter.genre
+
+      # competitionFilter : (item) ->
+      #   if $scope.filter.competition is 'T'
+      #     $scope.methods.init($scope.allCompetitionsArray)
+      #     return item
+      #   else if $scope.filter.competition is 'A'
+      #     $scope.methods.init(_.filter $scope.allCompetitionsArray, (item) -> return item.alcoholic)
+      #     return item.alcoholic is yes
+      #   else
+      #     $scope.methods.init(_.filter $scope.allCompetitionsArray, (item) -> return !item.alcoholic)
+      #     return item.alcoholic is no
 
     # Listeners & Watchers
 

@@ -24,7 +24,7 @@
                   <span ng-bind="$select.selected.name"></span>
                   <button class="ui-select-clear" ng-click="methods.validateRepsRemoved($event, $select.selected, $index)"> &#10006; </button>
               </ui-select-match>
-              <ui-select-choices ui-disable-choice="selectedReps.indexOf(rep) > -1" repeat="rep in reps | filter: $select.search track by $index">
+              <ui-select-choices ui-disable-choice="methods.validateReps(rep)" repeat="rep in reps | filter: $select.search track by $index">
                   <span ng-bind="rep.name"></span>
               </ui-select-choices>
           </ui-select>

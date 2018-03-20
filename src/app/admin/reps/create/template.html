@@ -11,16 +11,24 @@
             <input type="text" ng-model="rep.name" placeholder="Digite..."/>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 input-col">
-            <label>Email:</label>
-            <input type="text" ng-model="rep.email" placeholder="Digite..."/>
+            <label>Gênero:</label>
+            <select name="genre-select" id="genre-select" ng-model="rep.genre">
+              <option value="" disabled selected>Selecione</option>
+              <option value="F">Feminino</option>
+              <option value="M">Masculino</option>
+            </select>
           </div>
         </div>
         <div class="row input-row">
-          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 input-col">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 input-col">
+            <label>Email:</label>
+            <input type="text" ng-model="rep.email" placeholder="Digite..."/>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 input-col">
             <label>Usúario:</label>
             <input type="text" ng-model="rep.user" placeholder="Digite..."/>
           </div>
-          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 input-col">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 input-col">
             <label>Senha:</label>
             <input type="text" ng-model="rep.password" placeholder="Digite..."/>
           </div>
