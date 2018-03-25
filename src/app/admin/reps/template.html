@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2" ng-style="{'margin-top': '10px'}">
-      <span>{{reps.length}} repúblicas cadastradas</span>
+      <span>{{reps.length || 0}} repúblicas cadastradas</span>
     </div>
   </div>
   <div class="row search-row">
@@ -105,13 +105,13 @@
           </div>
           <div class="row input-row-button">
             <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-              <button type="button" class="btn btn-outline" ng-click="methods.save()">Salvar</button>
+              <button type="button" class="btn btn-outline" ng-click="methods.saveRep()">Salvar</button>
             </div>
           </div>
         </form>
       </div>
       <div class="window-footer">
-        <button type="button" class="btn-outline" ng-click="methods.closeModal()">Fechar</button>
+        <button type="button" class="btn-outline" ng-click="methods.close()">Fechar</button>
       </div>
     </form>
   </div>

@@ -1,9 +1,10 @@
 angular.module 'interreps'
- .controller 'AdminRepsController', ($rootScope, $scope, $timeout, $interval, $filter, $state, $uibModal, FirebaseService) ->
+ .controller 'AdminRepsController', ($rootScope, $scope, $timeout, $interval, $filter, $state, $uibModal, $uibModalStack, toastr, FirebaseService) ->
     'ngInject'
 
     # Definitions
     storage = firebase.storage()
+    $scope.rep = {}
     $scope.reps = $scope.$parent.reps
     $scope.repsSearched = angular.copy $scope.reps
     $rootScope.currentState = _.find $rootScope.menu, (item) -> item.state is $state.current.name
@@ -42,18 +43,29 @@ angular.module 'interreps'
           animation: yes
           windowTemplateUrl: 'window-template.html'
           templateUrl: 'details.html'
-          controller: 'AdminRepsDetailsController'
+          controller: 'AdminRepsController'
           backdrop: 'no'
           resolve: rep: ->
             return rep
         )
+
+      saveRep : ->
+        if $scope.reps
+          $scope.rep.id =  $scope.reps.length + 1 
+        else
+          $scope.rep.id =  1
+        FirebaseService.createRep($scope.rep)
+        toastr.success 'República criada com sucesso'
+        $timeout () ->
+          $scope.methods.close()
+        , 500
 
       createRep : () ->
         modalInstance = $uibModal.open(
           animation: yes
           windowTemplateUrl: 'window-template.html'
           templateUrl: 'create.html'
-          controller: 'AdminRepsCreateController'
+          controller: 'AdminRepsController'
           backdrop: 'no'
           resolve: reps: ->
             return $scope.reps
@@ -66,6 +78,9 @@ angular.module 'interreps'
             $scope.reps = result
             $scope.repsSearched = angular.copy $scope.reps
             $scope.methods.init()
+
+      close : ->
+        $uibModalStack.dismissAll()
 
     # Linteners & Watchers
     $scope.$watch 'search', (newVal, oldval) ->
