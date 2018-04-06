@@ -36,7 +36,10 @@ angular.module 'interreps'
         $scope.showForm = !$scope.showForm
 
       login : () ->
+        console.log StorageService.getCurrentUser()
         StorageService.deleteCurrentUser()
+        console.log StorageService.getCurrentUser()
+
         currentUser = _.find $scope.users, (user) -> user.user is $scope.user.user and user.password is $scope.user.password
         currentRep  = _.find $scope.reps, (rep) -> rep.user is $scope.user.user and rep.password is $scope.user.password
 
@@ -49,7 +52,7 @@ angular.module 'interreps'
 
         if currentRep
           user = {type: 'rep', user: currentRep}
-          StorageService.setCurrentUser(user)
+          StorageService.setCurrentUser(currentRep)
           $timeout () ->
             $state.go 'register', {id: currentRep.id}
           , 1000

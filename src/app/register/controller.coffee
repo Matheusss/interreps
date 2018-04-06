@@ -3,6 +3,8 @@ angular.module 'interreps'
     'ngInject'
 
     # Definitions
+    storage = firebase.storage()
+
     $scope.rep                  = rep
     $scope.allCompetitions      = competitions
     $scope.prices               = prices
@@ -13,6 +15,7 @@ angular.module 'interreps'
     $scope.user                 = StorageService.getCurrentUser().user
     $scope.participants         = $scope.rep.participants or []
     $scope.parts                = angular.copy $scope.participants
+
     $scope.formInvalid          =
       invalid : no
       errors  : []
@@ -22,6 +25,11 @@ angular.module 'interreps'
     $scope.team                 =
       partitipants : []
       competition  : {}
+
+    storage.ref("logos/#{$scope.rep.user}.jpg").getDownloadURL()
+      .then (url) ->
+        $timeout ->
+          rep.url = url
 
     # Methods
     $scope.methods =

@@ -5,12 +5,12 @@
 
       </div>
       <div class="user-info">
-        <div class="rep-logo" ng-style="{ 'background-image': 'url(' + img + ')' }"></div>
+        <div class="rep-logo" ng-style="{ 'background-image': 'url(' + rep.logo + ')' }"></div>
         <div class="rep-name">
           <div class="rep-name-container">
             <div class="btn-group ul-options-dropdown" uib-dropdown is-open="logout.isopen" uib-dropdown dropdown-append-to-body>
             <button id="single-button" type="button" class="icon-btn" uib-dropdown-toggle >
-              <span class="rep-name-label">República {{user.name}}</span>
+              <span class="rep-name-label">República {{rep.name}}</span>
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
@@ -33,16 +33,18 @@
             <h3 class="register-title">Participantes</h3>
             <form novalidate ng-submit="methods.addParticipant()">
               <div class="register-input">
-                <label>Escreva o nome de cada participante e clique no botão ou pressione 'enter' para adicioná-lo:</label>
+                <label>Escreva o nome e o apelido de cada participante e clique no botão ou pressione 'enter' para adicioná-lo:</label>
                 <input type="text" placeholder="Nome" class="email animated clean-padding-sides" ng-model="participant.name" required/>
-                <button class="icon-btn" type="submit" ng-click="methods.addParticipant"><i class="add-participant fas fa-plus-circle fa-lg"></i></button>
+                <input type="text" placeholder="Apelido" class="email animated clean-padding-sides" ng-model="participant.username" required/>
+
+                <button class="icon-btn" type="submit" ng-click="methods.addParticipant" ng-disabled="!participant.name || !participant.username"><i class="add-participant fas fa-plus-circle fa-lg"></i></button>
               </div>
             </form>
             <div class="participants">
               <div class="" ng-repeat="participant in participants track by $index">
                 <span class="tag animated animated-fill">
                   <span ng-if="::removeCallback" class="tag-remove-btn" ng-click="methods.remove(index)"></span>
-                  <a>{{participant.name}}</a>
+                  <a>{{participant.name}} ({{participant.username}})</a>
                   <button class="icon-btn" ng-click="methods.removeParticipant($index)"><i class="fas fa-trash"></i></button>
                 </span>
               </div>
@@ -114,7 +116,7 @@
                     <span ng-bind="$item.name"></span>
                 </ui-select-match>
                 <ui-select-choices repeat="item in participants | filter: $select.search track by $index">
-                    <span ng-bind="item.name"></span>
+                    <span>{{item.name}} (item.username)</span>
                 </ui-select-choices>
             </ui-select>
             </div>
