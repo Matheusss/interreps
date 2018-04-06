@@ -9,7 +9,7 @@ angular.module 'interreps'
     # Methods
     $scope.methods =
       save : ->
-        $scope.rep.id = $scope.reps.length + 1
+        $scope.rep.id = $scope.reps.length ? $scope.reps.length + 1 : 1
         FirebaseService.createRep($scope.rep)
         toastr.success 'República criada com sucesso'
         $timeout () ->
