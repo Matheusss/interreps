@@ -60,6 +60,72 @@
   background-image: url("../../assets/images/aaauso-black.png");
 }
 
+
+.admin-menu {
+  width: 55%;
+  height: 100%;
+  display: inline-block;
+}
+
+@media (max-width: 850px) {
+  .admin-menu .ul-options {
+    display: none;
+  }
+}
+
+@media (min-width: 850px) {
+  .admin-menu .ul-options {
+    display: inline-block;
+  }
+}
+
+@media (max-width: 850px) {
+  .admin-menu .ul-options-dropdown {
+    display: inline-block;
+  }
+}
+
+@media (min-width: 850px) {
+  .admin-menu .ul-options-dropdown {
+    display: none;
+  }
+}
+
+.ul-options-dropdown {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* line-height: 1; */
+  /* zoom: 1;
+  font-size: 0; */
+  height: 100%;
+  width: auto;
+}
+
+.ul-options-dropdown .btn-outline {
+  text-transform: initial;
+}
+
+.ul-options-dropdown button {
+  margin: auto;
+  float: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
+}
+
+.ul-options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* line-height: 1; */
+  /* zoom: 1;
+  font-size: 0; */
+  height: 100%;
+}
+
+
 .user-info {
   width: 20%;
   height: 100%;

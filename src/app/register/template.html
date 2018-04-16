@@ -1,8 +1,29 @@
 <div class="register">
   <div class="navbar">
     <div class="navbar-container">
-      <div class="aaauso-logo">
+      <div class="aaauso-logo"></div>
+      <div class="admin-menu">
+        <ul class="ul-options">
+          <li class="menu-name" ng-class="{'active' : currentMenu.value === item.value}" ng-repeat="item in menu">
+            <a ng-click="methods.setCurrentMenu(item)">
+              <span>
+                <i class="{{item.icon}}"></i>
+                <span class="name">{{item.name}}</span>
+              </span>
+            </a>
+          </li>
+        </ul>
 
+        <div class="btn-group ul-options-dropdown" uib-dropdown is-open="status.isopen" uib-dropdown dropdown-append-to-body>
+          <button id="single-button" type="button" class="btn btn-outline" uib-dropdown-toggle >
+            {{currentMenu.name}} <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+            <li role="menuitem" ng-repeat="item in menu" ng-class="{'active' : currentMenu.value === item.value}">
+              <a ng-click="methods.setCurrentMenu(item)">{{item.name}}</a>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="user-info">
         <div class="rep-logo" ng-style="{ 'background-image': 'url(' + rep.logo + ')' }"></div>
@@ -14,7 +35,7 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-              <li role="menuitem"><a ng-click="methods.logout()" style="cursor: pointer;">logout</a></li>
+              <li role="menuitem"><a ng-click="methods.logout()" style="cursor: pointer;">sair</a></li>
             </ul>
           </div>
           </div>
@@ -22,9 +43,9 @@
       </div>
     </div>
   </div>
-  <div class="register-layer">
+  <div class="register-layer" >
     <div class="register-parent-container">
-      <div class="register-container">
+      <div class="register-container" id="register" ng-if="currentMenu.value === 'register'">
         <div class="register-title">
           <h1>Inscrição (Custo total: R${{totalCost || 0}},00)</h1>
         </div>
@@ -126,14 +147,22 @@
           </div>
         </div>
       </div>
+      <div class="schedules-container" id="schedule" ng-if="currentMenu.value === 'schedule'">
+        schedule
+      </div>
+      <div class="scores-container" id="scores" ng-if="currentMenu.value === 'scores'">
+        <uib-tabset active=0>
+          <uib-tab index="0" heading="Classificação geral"><div ng-include="'app/admin/scores/abas/geral.html'"></div></uib-tab>
+          <!-- <uib-tab index="1" heading="Classificação por prova"><div ng-include="'app/admin/scores/abas/byComps.html'"></div></uib-tab> -->
+        </uib-tabset>
+      </div>
+      <div class="rules-container" id="rules" ng-if="currentMenu.value === 'rules'">
+        <pre>
+          {{ rules }}
+        </pre>
+      </div>
+
+
     </div>
-    <!-- <div class="errors-container" ng-class="{'show' : formInvalid.invalid}">
-      <h5>Erros</h2>
-      <ul class="errors" >
-        <li ng-repeat="error in formInvalid.errors track by $index">
-          <span>{{error}}</span>
-        </li>
-      </ul>
-    </div> -->
   </div>
 </div>

@@ -1,12 +1,18 @@
 angular.module 'interreps'
- .controller 'RegisterController', ($rootScope, $scope, $state, $timeout, $interval, $localStorage, FirebaseService, StorageService, toastr, rep, competitions, prices) ->
+ .controller 'RegisterController', ($rootScope, $scope, $state, $timeout, $interval, $localStorage, FirebaseService, StorageService, toastr, rep, reps, rules, competitions, allCompetitionsArray, prices) ->
     'ngInject'
 
     # Definitions
     storage = firebase.storage()
 
     $scope.rep                  = rep
+    $scope.reps                 = reps
+    $scope.updatedReps          = angular.copy $scope.reps
+
+    $scope.rules                = rules
+
     $scope.allCompetitions      = competitions
+    $scope.allCompetitionsArray = allCompetitionsArray
     $scope.prices               = prices
     $scope.totalCost            = $scope.rep.totalCost or 0
     $scope.selectedPrice        = {}
@@ -15,6 +21,37 @@ angular.module 'interreps'
     $scope.user                 = StorageService.getCurrentUser().user
     $scope.participants         = $scope.rep.participants or []
     $scope.parts                = angular.copy $scope.participants
+    $scope.filter =
+      genre : 'G'
+      competitions: 'T'
+      
+    $scope.currentMenu          = {
+      name: 'Cadastro'
+      icon: 'fas fa-users fa-lg'
+      value: 'register'
+    }
+    $rootScope.menu = [
+      {
+        name: 'Cadastro'
+        icon: 'fas fa-users fa-lg'
+        value: 'register'
+      }
+      {
+        name: 'Horários'
+        icon: 'fas fa-clock fa-lg'
+        value: 'schedules'
+      }
+      {
+        name: 'Placar'
+        icon: 'fas fa-trophy fa-lg'
+        value: 'scores'
+      }
+      {
+        name: 'Regulamento'
+        icon: 'fas fa-exclamation-circle fa-lg'
+        value: 'rules'
+      }
+    ]
 
     $scope.formInvalid          =
       invalid : no
@@ -33,6 +70,41 @@ angular.module 'interreps'
 
     # Methods
     $scope.methods =
+      init : ->
+        $scope.leaderboard = []
+        $scope.selectedReps = []
+        _.each $scope.reps, (rep) ->
+          index = _.indexOf $scope.reps, rep
+          obj =
+            position: index + 1
+            rep     : {}
+
+          $scope.leaderboard.push obj
+
+        _.map $scope.allCompetitionsArray, (competition) ->
+          matches = competition.name.match(/\b(\w)/g)
+          competition.initials = matches.join('')
+
+        _.map $scope.updatedReps, (rep) ->
+          _.each $scope.allCompetitionsArray, (comp) ->
+           index = _.findIndex rep.competitions, (c) -> c.name is comp.name
+           if index is -1
+             rep.competitions = rep.competitions || []
+             rep.competitions.push({
+               name: comp.name
+               })
+
+
+      genreFilter : (item) ->
+        if $scope.filter.genre is 'G'
+          return item
+        else
+          return item.genre is $scope.filter.genre
+
+      setCurrentMenu : (menu) ->
+        $scope.currentMenu = menu
+        console.log(menu, $scope.currentMenu)
+
       logout : () ->
         StorageService.deleteCurrentUser()
         $state.go 'home', {logout: yes}
@@ -119,5 +191,5 @@ angular.module 'interreps'
     , yes
 
 
-
+    $scope.methods.init()
     return

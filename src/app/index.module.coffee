@@ -13,5 +13,6 @@ angular.module 'interreps', [
   'ui.select',
   'xeditable',
   'akoenig.deckgrid',
-  'ngFileUpload'
+  'ngFileUpload',
+  'offline'
 ]

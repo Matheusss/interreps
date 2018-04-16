@@ -3,18 +3,34 @@ angular.module 'interreps'
     'ngInject'
     $stateProvider
       .state 'register',
-        url: '/register/:id'
+        url: '/register'
         params: { id: null }
         templateUrl: 'app/register/template.html'
         controller: 'RegisterController'
         controllerAs: 'register'
         resolve :
-           rep: ['FirebaseService', '$stateParams', (FirebaseService, $stateParams) ->
-              FirebaseService.getRepById($stateParams.id)
+           rep: ['FirebaseService', 'StorageService', (FirebaseService, StorageService) ->
+              user = StorageService.getCurrentUser()
+              FirebaseService.getRepById(user.id)
             ]
            competitions: ['FirebaseService', (FirebaseService) ->
               FirebaseService.getAllCompetitions()
             ]
            prices: ['FirebaseService', (FirebaseService) ->
               FirebaseService.getPrices()
+            ]
+           rules: ['FirebaseService', (FirebaseService) ->
+              FirebaseService.getRules()
+            ]
+
+           reps: ['FirebaseService', (FirebaseService) ->
+              FirebaseService.getAllReps()
+            ]
+
+           allCompetitionsArray: ['FirebaseService', (FirebaseService) ->
+              FirebaseService.getCompetitionsArray()
+            ]
+
+           points: ['FirebaseService', (FirebaseService) ->
+              FirebaseService.updatePoints()
             ]

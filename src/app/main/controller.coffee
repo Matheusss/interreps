@@ -36,9 +36,7 @@ angular.module 'interreps'
         $scope.showForm = !$scope.showForm
 
       login : () ->
-        console.log StorageService.getCurrentUser()
         StorageService.deleteCurrentUser()
-        console.log StorageService.getCurrentUser()
 
         currentUser = _.find $scope.users, (user) -> user.user is $scope.user.user and user.password is $scope.user.password
         currentRep  = _.find $scope.reps, (rep) -> rep.user is $scope.user.user and rep.password is $scope.user.password

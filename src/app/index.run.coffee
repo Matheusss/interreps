@@ -1,7 +1,13 @@
 angular.module 'interreps'
-  .run ($log, $rootScope, $state, $templateCache, StorageService) ->
+  .run ($log, $rootScope, $state, $templateCache, StorageService, offline, connectionStatus) ->
     'ngInject'
     $log.debug 'runBlock end'
+
+    connectionStatus.$on 'online', () ->
+      console.log 'online'
+
+    connectionStatus.$on 'offline', () ->
+      console.log 'offline'
 
     $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams, options) ->
       if !StorageService.getCurrentUser().user and fromState.name isnt ''
