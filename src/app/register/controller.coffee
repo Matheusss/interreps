@@ -24,7 +24,7 @@ angular.module 'interreps'
     $scope.filter =
       genre : 'G'
       competitions: 'T'
-      
+
     $scope.currentMenu          = {
       name: 'Cadastro'
       icon: 'fas fa-users fa-lg'
@@ -41,11 +41,11 @@ angular.module 'interreps'
         icon: 'fas fa-clock fa-lg'
         value: 'schedules'
       }
-      {
-        name: 'Placar'
-        icon: 'fas fa-trophy fa-lg'
-        value: 'scores'
-      }
+      # {
+      #   name: 'Placar'
+      #   icon: 'fas fa-trophy fa-lg'
+      #   value: 'scores'
+      # }
       {
         name: 'Regulamento'
         icon: 'fas fa-exclamation-circle fa-lg'

@@ -56,16 +56,16 @@
               <div class="register-input">
                 <label>Escreva o nome e o apelido de cada participante e clique no botão ou pressione 'enter' para adicioná-lo:</label>
                 <input type="text" placeholder="Nome" class="email animated clean-padding-sides" ng-model="participant.name" required/>
-                <input type="text" placeholder="Apelido" class="email animated clean-padding-sides" ng-model="participant.username" required/>
+                <input type="text" placeholder="Apelido" class="email animated clean-padding-sides" ng-model="participant.username"/>
 
-                <button class="icon-btn" type="submit" ng-click="methods.addParticipant" ng-disabled="!participant.name || !participant.username"><i class="add-participant fas fa-plus-circle fa-lg"></i></button>
+                <button class="icon-btn" type="submit" ng-click="methods.addParticipant" ng-disabled="!participant.name"><i class="add-participant fas fa-plus-circle fa-lg"></i></button>
               </div>
             </form>
             <div class="participants">
               <div class="" ng-repeat="participant in participants track by $index">
                 <span class="tag animated animated-fill">
                   <span ng-if="::removeCallback" class="tag-remove-btn" ng-click="methods.remove(index)"></span>
-                  <a>{{participant.name}} ({{participant.username}})</a>
+                  <a>{{participant.name}} <span ng-if="participant.username">({{participant.username}})</span></a>
                   <button class="icon-btn" ng-click="methods.removeParticipant($index)"><i class="fas fa-trash"></i></button>
                 </span>
               </div>
@@ -130,16 +130,16 @@
           <div class="col-md-12">
             <h3 class="register-title">Participantes X Provas</h3>
             <label>Agora selecione o(s) participante(s) que irá(ão) competir cada prova:</label>
-            <div class="selects" ng-repeat="comp in selectedCompetitions track by $index">
+            <div class="col-md-3" ng-repeat="comp in selectedCompetitions track by $index">
               <label>{{comp.name}} (max: {{comp.maxParticipants}})</label>
               <ui-select ng-model="comp.team" theme="bootstrap" multiple limit="{{comp.maxParticipants}}">
                 <ui-select-match>
-                    <span ng-bind="$item.name"></span>
+                  <span ng-bind="$item.name"></span>
                 </ui-select-match>
                 <ui-select-choices repeat="item in participants | filter: $select.search track by $index">
-                    <span>{{item.name}} (item.username)</span>
+                  <span>{{item.name}} <span ng-if="item.username">({{item.username}})</span></span>
                 </ui-select-choices>
-            </ui-select>
+              </ui-select>
             </div>
           </div>
           <div class="row save-btn-row">
@@ -150,12 +150,11 @@
       <div class="schedules-container" id="schedule" ng-if="currentMenu.value === 'schedule'">
         schedule
       </div>
-      <div class="scores-container" id="scores" ng-if="currentMenu.value === 'scores'">
+      <!-- <div class="scores-container" id="scores" ng-if="currentMenu.value === 'scores'">
         <uib-tabset active=0>
           <uib-tab index="0" heading="Classificação geral"><div ng-include="'app/admin/scores/abas/geral.html'"></div></uib-tab>
-          <!-- <uib-tab index="1" heading="Classificação por prova"><div ng-include="'app/admin/scores/abas/byComps.html'"></div></uib-tab> -->
         </uib-tabset>
-      </div>
+      </div> -->
       <div class="rules-container" id="rules" ng-if="currentMenu.value === 'rules'">
         <pre>
           {{ rules }}
