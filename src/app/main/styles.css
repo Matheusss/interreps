@@ -28,18 +28,7 @@
   right: 0;
   transition: opacity 1.5s;
   opacity: 0;
-  /* background-image: url('/assets/images/img1.jpeg');
-  background-size: cover;
-  background-position: center;
-  height: 100%; */
 }
-
-/* .logo-bg {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-image: url("src/assets/images/aaauso-white.png");
-} */
 
 .visible {
   transition: none;
@@ -93,7 +82,7 @@
 }
 
 .home-content {
-   width: 40%; 
+   width: 40%;
   display: table-cell;
   vertical-align: middle;
   text-align: left;

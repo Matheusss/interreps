@@ -4,6 +4,7 @@ angular.module 'interreps'
 
     # Definitions
     $scope.rep = rep
+    console.log rep
 
     # Methods
     $scope.methods =

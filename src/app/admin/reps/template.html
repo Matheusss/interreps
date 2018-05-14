@@ -21,7 +21,7 @@
       <div class="rep-logo" ng-style="{ 'background-image': 'url(' + card.url + ')' }"> </div>
       <div class="rep-fast-info">
         <h2 class="name" ng-bind="::card.name"></h2>
-        <h6 class="status">Coringa: {{::card.joker}}</h6>
+        <h6 class="status">Coringa: {{card.joker.name}} <span ng-show="card.joker.username">({{::card.joker.username}})</span></h6>
       </div>
     </div>
    </div>
@@ -29,7 +29,10 @@
 </div>
 
 <!-- Details template -->
-<script type="text/ng-template" id="details.html">
+<!-- <script type="text/ng-template" id="details.html">
+  <pre>
+    {{selectedRep | json}}
+  </pre>
   <div id="modal-rep-details">
     <div class="window-header">
       <h1 class="window-description-header">República {{rep.name}}</h1>
@@ -43,7 +46,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-if="rep.competitions.length" ng-repeat="comp in rep.competitions">
+            <tr ng-if="selectedRep.competitions.length" ng-repeat="comp in selectedRep.competitions">
               <td class="column-1">{{comp.name}}</td>
               <td class="column-2">
                 <ul ng-repeat="part in comp.team">
@@ -53,7 +56,7 @@
                 </ul>
               </td>
             </tr>
-            <tr ng-if="!rep.competitions.length">
+            <tr ng-if="!selectedRep.competitions.length">
               <td class="no-data-td">Nenhum dado encontrado.</td>
             </tr>
           </tbody>
@@ -64,7 +67,7 @@
       </div>
     </form>
   </div>
-</script>
+</script> -->
 
 <!-- Create template -->
 <script type="text/ng-template" id="create.html">

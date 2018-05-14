@@ -14,6 +14,7 @@ angular.module 'interreps'
     $scope.allCompetitions      = competitions
     $scope.allCompetitionsArray = allCompetitionsArray
     $scope.prices               = prices
+    $scope.schedule             = ''
     $scope.totalCost            = $scope.rep.totalCost or 0
     $scope.selectedPrice        = {}
     $scope.img                  = "../assets/images/#{$scope.rep.user}.jpg"
@@ -39,7 +40,7 @@ angular.module 'interreps'
       {
         name: 'Horários'
         icon: 'fas fa-clock fa-lg'
-        value: 'schedules'
+        value: 'schedule'
       }
       # {
       #   name: 'Placar'
@@ -67,6 +68,11 @@ angular.module 'interreps'
       .then (url) ->
         $timeout ->
           rep.url = url
+
+    storage.ref("assets/schedule.PNG").getDownloadURL()
+    .then (url) ->
+      $timeout ->
+        $scope.schedule = url
 
     # Methods
     $scope.methods =
@@ -103,7 +109,6 @@ angular.module 'interreps'
 
       setCurrentMenu : (menu) ->
         $scope.currentMenu = menu
-        console.log(menu, $scope.currentMenu)
 
       logout : () ->
         StorageService.deleteCurrentUser()

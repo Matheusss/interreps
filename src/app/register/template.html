@@ -76,7 +76,7 @@
               <div class="section-info">
                 <label>Selecione as provas que desejam participar:</label>
               </div>
-              <div class="col-md-4">
+              <div class="col-xs-4 col-sm-4 col-md-4">
                 <label class="comp-type">Esportes</label>
                 <div class="checkboxes" ng-repeat="comp in allCompetitions.sports track by $index">
                   <label class="custom-checkboxes icon-btn" ng-if="(comp.genre && comp.genre == rep.genre) || !comp.genre">
@@ -87,7 +87,7 @@
                   </label>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-xs-4 col-sm-4 col-md-4">
                 <label class="comp-type">Não alcóolicos</label>
                 <div class="checkboxes" ng-repeat="comp in allCompetitions.nonAlcoholic.individual track by $index">
                   <label class="custom-checkboxes icon-btn">
@@ -106,7 +106,7 @@
                   </label>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-xs-4 col-sm-4 col-md-4">
                 <label class="comp-type">Alcóolicos</label>
                 <div class="checkboxes" ng-repeat="comp in allCompetitions.alcoholic.individual track by $index">
                   <label class="custom-checkboxes icon-btn">
@@ -127,34 +127,30 @@
               </div>
             </div>
           </div>
-          <div class="col-md-12">
-            <h3 class="register-title">Participantes X Provas</h3>
-            <label>Agora selecione o(s) participante(s) que irá(ão) competir cada prova:</label>
-            <div class="col-md-3" ng-repeat="comp in selectedCompetitions track by $index">
-              <label>{{comp.name}} (max: {{comp.maxParticipants}})</label>
-              <ui-select ng-model="comp.team" theme="bootstrap" multiple limit="{{comp.maxParticipants}}">
-                <ui-select-match>
-                  <span ng-bind="$item.name"></span>
-                </ui-select-match>
-                <ui-select-choices repeat="item in participants | filter: $select.search track by $index">
-                  <span>{{item.name}} <span ng-if="item.username">({{item.username}})</span></span>
-                </ui-select-choices>
-              </ui-select>
-            </div>
+
+        </div>
+        <div class="col-md-12">
+          <h3 class="register-title">Participantes X Provas</h3>
+          <label>Agora selecione o(s) participante(s) que irá(ão) competir cada prova:</label>
+          <div class="comps-selects" ng-repeat="comp in selectedCompetitions | orderBy: 'name' track by $index">
+            <label>{{comp.name}} (max: {{comp.maxParticipants}})</label>
+            <ui-select ng-model="comp.team" theme="bootstrap" multiple limit="{{comp.maxParticipants}}">
+              <ui-select-match>
+                <span ng-bind="$item.name"></span>
+              </ui-select-match>
+              <ui-select-choices repeat="item in participants | filter: $select.search track by $index">
+                <span>{{item.name}} <span ng-if="item.username">({{item.username}})</span></span>
+              </ui-select-choices>
+            </ui-select>
           </div>
-          <div class="row save-btn-row">
-            <button type="button" class="btn btn-outline" ng-click="methods.validateForm()">Salvar</button>
-          </div>
+        </div>
+        <div class="row save-btn-row">
+          <button type="button" class="btn btn-outline" ng-click="methods.validateForm()">Salvar</button>
         </div>
       </div>
       <div class="schedules-container" id="schedule" ng-if="currentMenu.value === 'schedule'">
-        schedule
+        <img src='{{schedule}}' />
       </div>
-      <!-- <div class="scores-container" id="scores" ng-if="currentMenu.value === 'scores'">
-        <uib-tabset active=0>
-          <uib-tab index="0" heading="Classificação geral"><div ng-include="'app/admin/scores/abas/geral.html'"></div></uib-tab>
-        </uib-tabset>
-      </div> -->
       <div class="rules-container" id="rules" ng-if="currentMenu.value === 'rules'">
         <pre>
           {{ rules }}

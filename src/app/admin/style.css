@@ -29,12 +29,6 @@
   border-radius: 0;
   background: rgba(255, 255, 255, 0.4);
   transition: background .5s;
-
-  /* -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background: linear-gradient(to left, #0881f4, #c007ed); */
 }
 
 .navbar:hover {

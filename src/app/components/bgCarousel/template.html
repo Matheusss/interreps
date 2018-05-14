@@ -1,3 +1,3 @@
-<div ng-repeat="img in images"
+<div ng-repeat="img in images track by $index"
     class="image" ng-class="{ 'visible': active_image == $index }" ng-style="{ 'background-image': 'url(' + img + ')' }">
 </div>

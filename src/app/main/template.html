@@ -1,7 +1,6 @@
 <div class="" id="home">
   <div class="home-container">
-    <div ng-bg-slideshow="[ '/assets/images/interreps1.jpg', '/assets/images/interreps2.jpg', '/assets/images/interreps3.jpg']" interval=5000></div>
-    <!-- <div class="image"></div> -->
+    <div ng-bg-slideshow="images" interval=5000></div>
   </div>
   <div class="home-container-layer">
     <div class="home-center-container">
@@ -15,7 +14,6 @@
           <div class="home-content">
             <div class="home-divider">
               <div class="logo">
-                <!-- <h1>Atlética Unesp Sorocaba</h1> -->
                 <div class="logo-bg"></div>
               </div>
 
@@ -34,7 +32,7 @@
                     </div>
 
                     <div class="login-actions">
-                      <button type="button" ng-disabled="!user.user || !user.password" class="btn btn-login" ng-click="methods.login()">Login</button>
+                      <button type="submit" ng-disabled="!user.user || !user.password" class="btn btn-login" ng-click="methods.login()">Login</button>
                     </div>
                   </form>
                 </div>

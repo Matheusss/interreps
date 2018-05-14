@@ -5,6 +5,7 @@ angular.module 'interreps'
     # Definitions
     storage = firebase.storage()
     $scope.rep = {}
+    # $scope.selectedRep = {}
     $scope.reps = $scope.$parent.reps
     $scope.repsSearched = angular.copy $scope.reps
     $rootScope.currentState = _.find $rootScope.menu, (item) -> item.state is $state.current.name
@@ -22,9 +23,14 @@ angular.module 'interreps'
               return rep
           if rep.competitions
             joker = _.find rep.competitions, (comp) -> comp.name is 'Coringa'
-            rep.joker = if joker then joker.team[0] else ''
+            if joker and joker.team
+              rep.joker = joker.team[0]
+            else
+              rep.joker =
+                name: '-'
           else
-            rep.joker = '-'
+            rep.joker =
+              name: '-'
 
         _.map $scope.repsSearched, (rep) ->
           storage.ref("logos/#{rep.user}.jpg").getDownloadURL()
@@ -34,24 +40,30 @@ angular.module 'interreps'
               return rep
           if rep.competitions
             joker = _.find rep.competitions, (comp) -> comp.name is 'Coringa'
-            rep.joker = if joker then joker.team[0] else ''
+            if joker and joker.team
+              rep.joker = joker.team[0]
+            else
+              rep.joker =
+                name: '-'
           else
-            rep.joker = '-'
+            rep.joker =
+              name: '-'
 
       getDetails : (rep) ->
         modalInstance = $uibModal.open(
           animation: yes
-          windowTemplateUrl: 'window-template.html'
-          templateUrl: 'details.html'
-          controller: 'AdminRepsController'
+          windowTemplateUrl: 'app/admin/reps/details/window-template.html'
+          templateUrl: 'app/admin/reps/details/template.html'
+          controller: 'AdminRepsDetailsController'
           backdrop: 'no'
           resolve: rep: ->
+            console.log rep.competitions
             return rep
         )
 
       saveRep : ->
         if $scope.reps
-          $scope.rep.id =  $scope.reps.length + 1 
+          $scope.rep.id =  $scope.reps.length + 1
         else
           $scope.rep.id =  1
         FirebaseService.createRep($scope.rep)

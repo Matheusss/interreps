@@ -31,7 +31,24 @@ angular.module 'interreps'
       password: undefined
       user: undefined
 
+    storage = firebase.storage()
+
+    $scope.images = []
+
     $scope.methods =
+      getImages : () ->
+        i = 1
+        imagesLength = 17
+        $scope.images = []
+
+        for index in [i..imagesLength]
+          storage.ref("images/#{index}.jpg").getDownloadURL()
+          .then (url) ->
+            if url
+              $scope.images.push url
+
+        $scope.images = _.shuffle($scope.images)
+
       changeView : () ->
         $scope.showForm = !$scope.showForm
 
@@ -59,4 +76,5 @@ angular.module 'interreps'
           toastr.error 'Login e/ou senha inválido(s)'
 
 
+    $scope.methods.getImages()
     return

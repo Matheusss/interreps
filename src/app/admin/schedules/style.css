@@ -1,8 +1,16 @@
 .schedules-container {
   height: 100%;
-  width: 80%;
-  margin: auto;
-  margin-top: 50px;
-  background: rgba(255,255,255, 0.4);
+  overflow: auto;
+  /* width: 80%; */
+  /* margin: auto; */
+  /* margin-top: 50px; */
+  /* background: rgba(255,255,255, 0.4); */
+  /* padding: 10px; */
+  /* background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+}
+
+.schedules-container img {
   padding: 10px;
 }

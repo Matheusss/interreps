@@ -2,7 +2,6 @@
   <div class="window-header">
     <h1 class="window-description-header">República {{rep.name}}</h1>
   </div>
-
     <div class="window-content">
       <table class="table table-striped rep-infos-table">
         <thead>
@@ -17,7 +16,7 @@
             <td class="column-2">
               <ul ng-repeat="part in comp.team">
                 <li>
-                  - {{part.name}} (part.username)
+                  - {{part.name}} ({{part.username}})
                 </li>
               </ul>
             </td>
@@ -28,11 +27,8 @@
         </tbody>
       </table>
     </div>
-
     <div class="window-footer">
-      <button type="button" class="btn-outline" ng-click="methods.closeModal()">Fechar</button>
+      <button type="button" class="btn-outline" ng-click="methods.close()">Fechar</button>
     </div>
-
   </form>
-
 </div>
